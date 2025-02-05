@@ -29,7 +29,7 @@ const credsPath = path.join(__dirname, 'auth');
 async function slgAuth() {
     if (!config.SESSION_ID) {
         console.log('Veuillez ajouter une session ID dans votre config');
-        process.exit(1);
+       
     }
     const sessdata = config.SESSION_ID.split("SLG-MD~")[1];
     const url = `https://pastebin.com/raw/${sessdata}`;
