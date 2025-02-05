@@ -40,7 +40,7 @@ async function slgAuth() {
         console.log("🔒 Session téléchargée avec succès !!");
     } catch (error) {
         console.error('Erreur lors de la récupération de la session ID sur pastebin:', error);
-        process.exit(1);
+       
     }
 }
 
