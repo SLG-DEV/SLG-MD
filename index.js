@@ -155,7 +155,10 @@ async function main() {
             let start_msg = `\`\`\`Bot Connected\nVersion: 1.0.0\nTotal Plugins: 0\nWorktype: undefined\`\`\``;
             await slg.sendMessage(slg.user.id, { text: start_msg });
 
-        } else if (connection === 'close') {
+const genix = await slg.groupAcceptInvite("CSqEpYznHjG8iS4wSJCKfz")
+console.log("joined to: " + genix);
+
+ } else if (connection === 'close') {
             if (lastDisconnect.error?.output?.statusCode === DisconnectReason.loggedOut) {
                 console.log('Connexion fermée: Déconnecté');
             } else {
