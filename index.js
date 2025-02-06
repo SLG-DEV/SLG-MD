@@ -40,7 +40,7 @@ async function main() {
     await slgAuth();
 
     const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
-    const { state, saveCreds } = await useMultiFileAuthState(credsPath);
+        const { state, saveCreds } = await useMultiFileAuthState(path.join(__dirname, 'auth'));
     const { version, isLatest } = await fetchLatestBaileysVersion();
 
     const slg = makeWASocket({
