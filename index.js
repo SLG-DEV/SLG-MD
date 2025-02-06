@@ -28,7 +28,7 @@ async function slgAuth() {
     try {
         const response = await axios.get(url);
         const data = typeof response.data === 'string' ? response.data : JSON.stringify(response.data);
-        await fs.promises.writeFileSync(credsPath, data, 'utf8');
+        await fs.writeFileSync(credsPath, data, 'utf8');
         console.log("🔒 Session téléchargée avec succès !!");
     } catch (error) {
         console.error('Erreur lors de la récupération de la session ID sur pastebin:', error);
