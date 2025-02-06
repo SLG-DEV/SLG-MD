@@ -16,7 +16,7 @@ const pino = require("pino");
 const path = require('path');
 const { default: makeWASocket, useMultiFileAuthState, logger, delay, makeCacheableSignalKeyStore, jidDecode, getContentType, downloadContentFromMessage, makeInMemoryStore, fetchLatestBaileysVersion, DisconnectReason } = require("ovl_wa_baileys");
 
-const credsPath = path.join(__dirname, 'auth');
+const credsPath = path.join(__dirname, 'auth', 'creds.json');
 
 async function slgAuth() {
     if (!config.SESSION_ID) {
