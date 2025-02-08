@@ -14,6 +14,7 @@ const axios = require("axios");
 const fs = require("fs");
 const pino = require("pino");
 const path = require('path');
+let evt = require(__dirname + "/lib/slgcomd");
 const { default: makeWASocket, useMultiFileAuthState, logger, delay, makeCacheableSignalKeyStore, jidDecode, getContentType, downloadContentFromMessage, makeInMemoryStore, fetchLatestBaileysVersion, DisconnectReason } = require("ovl_wa_baileys");
 
 const credsPath = path.join(__dirname, 'auth', 'creds.json');
