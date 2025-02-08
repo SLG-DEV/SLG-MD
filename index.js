@@ -144,7 +144,7 @@ async function main() {
         };
 
 if (verif_Cmd) { 
-        const cd = evt.cmd.find((slgcomd) => slgcomd.nomCom === commands || (slgcomd.alias && slgcomd.alias.includes(cmds)));
+        const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === commands || (slgcomd.alias && slgcomd.alias.includes(cmds)));
 
         if (cd) {
              try {
