@@ -7,11 +7,11 @@ desc: "vérifié si le bot est en ligne"
 react: "🍷"
 type: "utiles"
 } 
-async {pseudo, ms_org, com_options} => {
+async {pseudo, ms_org, slg, com_options} => {
 
 const mess = `salut ${pseudo} je suis SLG-MD\nun bot développé par S L² G\n`
 console.log("le bot est en ligne");
-const rl =  ""
-slg.sendMessage(ms_org,{image:{url: 'rl'}, caption: mess})
+const rl =  "https://files.catbox.moe/uih7xz.jpg"
+slg.sendMessage(ms_org,{image:{url: rl}, caption: mess})
 
 })
