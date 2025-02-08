@@ -137,12 +137,22 @@ async function main() {
             arg,
             prefixe,
             repondre,
-            verif_Cmd,
-            cmds
+            verif_Cmd
         };
 
         // Traitez le message ici (ajoutez votre logique ici)
     });
+      if (verif_Cmd) { 
+        const cd = evt.cmd.find((slgcomd) => slgcomd.nom_cmd === commands || (slgcomd.alias && slgcomd.alias.includes(commands)));
+
+        if (cd) {
+             try {
+                if (config.MODE !== 'public' && !prenium_id) {
+                    return 
+                }
+                if ((!dev_id && auteur_Message !== '237693755398@s.whatsapp.net') && ms_org === "120363350159688817@g.us") {
+                return;
+            }         
 
     slg.ev.on("connection.update", async (con) => {
         const { connection, lastDisconnect } = con;
