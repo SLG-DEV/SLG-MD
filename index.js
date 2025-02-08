@@ -143,7 +143,7 @@ async function main() {
         // Traitez le message ici (ajoutez votre logique ici)
     });
       if (verif_Cmd) { 
-        const cd = evt.cmd.find((slgcomd) => slgcomd.nom_cmd === commands || (slgcomd.alias && slgcomd.alias.includes(commands)));
+        const cd = evt.cmd.find((slgcomd) => slgcomd.nom_cmd === commands || (slgcomd.alias && slgcomd.alias.includes(comds)));
 
         if (cd) {
              try {
