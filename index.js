@@ -107,12 +107,13 @@ async function main() {
         const verif_Cmd = texte ? texte.startsWith(prefixe) : false;
         const cmds = verif_Cmd ? texte.slice(préfixe.length).trim().split(/ +/).shift().toLowerCase() : false;
 
-        const devss = ['237693755398', '237621713181'];
-     /*   const devss_id = devss.map(v => `${v.replace(/[^0-9]/g, '')}@s.whatsapp.net`);
+        const Slgx = '237693755398';
+    const Slg_bot = '237621713181';
+    const devNumbers = [ Slg, Slg_bot ];
+    const premium_Users_id = [Slgx, Slg_bot, id_Bot_N, config.NUMERO_OWNER].map((s) => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
+    const prenium_id = premium_Users_id.includes(auteur_Message);
+    const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g) + "@s.whatsapp.net").includes(auteur_Message);
 
-        const isCreator = [...devss, id_Bot_N, ...config.NUMERO_OWNER.split(",")].map((v) => `${v.replace(/[^0-9]/g, '')}@s.whatsapp.net`).includes(auteur_Message);
-        
-        if (!isCreator && config.MODE === 'prive') { return; } */
 
         if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.LECTURE_AUTO_STATUS === "oui") {
             slg.readMessages([ms.key]);
@@ -135,24 +136,42 @@ async function main() {
             auteur_Message,
             membre_Gp,
             arg,
+            prenium_id,
+            dev_id,
             prefixe,
             repondre,
             verif_Cmd
         };
 
-        // Traitez le message ici (ajoutez votre logique ici)
-    });
-      if (verif_Cmd) { 
-        const cd = evt.cmd.find((slgcomd) => slgcomd.nom_cmd === commands || (slgcomd.alias && slgcomd.alias.includes(comds)));
+if (verif_Cmd) { 
+        const cd = evt.cmd.find((slgcomd) => slgcomd.nomCom === commands || (slgcomd.alias && slgcomd.alias.includes(cmds)));
 
         if (cd) {
              try {
                 if (config.MODE !== 'public' && !prenium_id) {
                     return 
                 }
-                if ((!dev_id && auteur_Message !== '237693755398@s.whatsapp.net') && ms_org === "120363350159688817@g.us") {
+
+            if ((!dev_id && auteur_Message !== '237693755398@s.whatsapp.net') && ms_org === "120363350159688817@g.us") {
                 return;
-            }         
+            }   
+
+         if(cd.react) {
+            await slg.sendMessage(ms_org, { react: { text: cd.react, key: ms.key } });
+         } else { 
+            await slg.sendMessage(ms_org, { react: { text: "🍷", key: ms.key } });
+         }
+         cd.fonction(ms_org, slg, com_options);
+        } catch (e) {
+            console.log("Erreur: " + e);
+            slg.sendMessage(ms_org, { text: "Erreur: " + e }, { quoted: ms });
+        }
+    }
+}
+          
+       // Traitez le message ici (ajoutez votre logique ici)
+    });
+        
 
     slg.ev.on("connection.update", async (con) => {
         const { connection, lastDisconnect } = con;
