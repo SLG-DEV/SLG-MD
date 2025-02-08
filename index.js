@@ -206,6 +206,13 @@ if (verif_Cmd) {
         } else if (connection === 'open') {
             console.log("✅ Connexion établie ; Le bot est en ligne 🌐\n\n");
 
+        const commandes = fs.readdirSync(path.join(__dirname, "commandes")).filter(fichier => path.extname(fichier).toLowerCase() === ".js");
+
+        for (const fichier of commandes) {
+            try {
+                require(path.join(__dirname, "commandes", fichier));
+                console.log(`${fichier} installé`);
+
             let start_msg = `\`\`\`Bot Connected\nVersion: 1.0.0\nTotal Plugins: 0\nWorktype: undefined\`\`\``;
             await slg.sendMessage(slg.user.id, { text: start_msg });
 
