@@ -192,7 +192,7 @@ if (verif_Cmd) {
     console.log("Auteur message: " + `${pseudo}\nNumero: ${auteur_Message.split("@s.whatsapp.net")[0]}`);
     console.log("Type: " + mtype);
     console.log("Message:");
-    console.log(texte
+    console.log(texte);
           
        // Traitez le message ici (ajoutez votre logique ici)
     });
