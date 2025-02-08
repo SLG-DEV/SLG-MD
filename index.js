@@ -118,7 +118,6 @@ async function main() {
         const nom_Gp = verif_Gp ? infos_Gp.subject : "";
         const membre_Gp = verif_Gp ? ms.key.participant : '';
         const mbre_membre = verif_Gp ? await infos_Gp.participants : '';
-            const admins = (participants) => participants.filter((m) => m.admin).map((m) => m.id);
         const verif_slg_Admin = verif_Gp ? admins.includes(id_Bot) : false;
 
         const cmds = verif_Cmd ? texte.slice(prefixe.length).trim().split(/ +/).shift().toLowerCase() : false;
@@ -155,7 +154,6 @@ async function main() {
             infos_Gp,
             nom_Gp,
             mbre_membre,
-            admins,
             verif_slg_Admin,
             dev_id,
             prefixe,
