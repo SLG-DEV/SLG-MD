@@ -5,5 +5,5 @@ module.exports = {
 OWNER: process.env.NUMERO_OWNER || "", 
 STATUS: process.env.LECTURE_AUTO_STATUS || "oui", 
  PREFIX: process.env.PREFIX || ",",
-   MODE: process.env.MODE || "prive",
+   MODE: process.env.MODE || "public",
 };
