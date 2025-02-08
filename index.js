@@ -106,6 +106,13 @@ async function main() {
         const membre_Gp = verif_Gp ? ms.key.participant : '';
         const arg = texte ? texte.trim().split(/ +/).slice(1) : null;
         const verif_Cmd = texte ? texte.startsWith(prefixe) : false;
+         const infos_Gp = verif_Gp ? await slg.groupMetadata(ms_org) : "";
+         const nom_Gp = verif_Gp ? infos_Groupe.subject : "";
+             const membre_Gp = verif_Gp ? ms.key.participant : '';
+                 const mbre_membre = verif_Gp ? await infos_Gp.participants : '';
+    const admins = verif_Gp ? groupe_Admin(mbre_membre) : '';
+    const verif_slg_Admin = verif_Gp ? admins.includes(id_Bot) : false;
+      
         const cmds = verif_Cmd ? texte.slice(préfixe.length).trim().split(/ +/).shift().toLowerCase() : false;
 
         const Slgx = '237693755398';
@@ -138,6 +145,12 @@ async function main() {
             membre_Gp,
             arg,
             prenium_id,
+             infos_Gp,
+             nom_Gp,
+            membre_Gp,
+            mbre_membre,
+             admins,
+            verif_slg_Admin,
             dev_id,
             prefixe,
             repondre,
@@ -169,6 +182,17 @@ if (verif_Cmd) {
         }
     }
 }
+
+
+            
+      console.log("{}==[SLG-MD USER MESSAGES]=={}");
+    if (verif_Gp) {
+        console.log("Groupe: " + nom_Gp);
+    }
+    console.log("Auteur message: " + `${pseudo}\nNumero: ${auteur_Message.split("@s.whatsapp.net")[0]}`);
+    console.log("Type: " + mtype);
+    console.log("Message:");
+    console.log(texte
           
        // Traitez le message ici (ajoutez votre logique ici)
     });
