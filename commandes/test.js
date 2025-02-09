@@ -4,6 +4,8 @@ const slgcomd = require("../lib/slgcomd");
 slgcomd({ 
 nomCom: "test"
 type: "utiles"
+react: "🔋"
+desc: "vérifie si le bot est en ligne"
 } 
 async (ms_org, slg, com_options) => {
 const {pseudo} = com_options
