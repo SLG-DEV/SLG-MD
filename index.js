@@ -1,4 +1,4 @@
-m// SLG
+
 
 /**
 ███████╗██╗      ██████╗       ███╗   ███╗██████╗ 
@@ -132,6 +132,17 @@ async function main() {
         if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.LECTURE_AUTO_STATUS === "oui") {
             slg.readMessages([ms.key]);
         }
+var  choix =config.PRESENCE.toLowerCase()
+
+                if(choix=="online")
+                {await slg.sendPresenceUpdate("available", ms_org);}
+                else if(choix=="ecrit")
+                {await slg.sendPresenceUpdate("composing",ms_org);}
+                else if(choix=="audio")
+                {
+                await slg.sendPresenceUpdate("recording",origineMessage);
+                }else{
+console.log(`aucune entrée pour la présence WhatsApp`) };
 
         function repondre(message) {
             slg.sendMessage(ms_org, { text: message }, { quoted: ms });
