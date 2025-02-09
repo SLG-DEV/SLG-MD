@@ -180,7 +180,7 @@ console.log(`aucune entrée pour la présence WhatsApp`) };
                         return;
                     }
 
-                    if ((!dev_id && auteur_Message !== Slgx + '@s.whatsapp.net') && ms_org === "120363350159688817@g.us") {
+                    if ((!dev_id && auteur_Message !== slgdev + '@s.whatsapp.net') && ms_org === "120363350159688817@g.us") {
                         return;
                     }
 
