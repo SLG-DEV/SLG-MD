@@ -140,7 +140,7 @@ var  choix = config.PRESENCE.toLowerCase()
                 {await slg.sendPresenceUpdate("composing",ms_org);}
                 else if(choix=="audio")
                 {
-                await slg.sendPresenceUpdate("recording",origineMessage);
+                await slg.sendPresenceUpdate("recording",ms_org);
                 }else{
 console.log(`aucune entrée pour la présence WhatsApp`) };
 
