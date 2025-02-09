@@ -5,7 +5,6 @@ slgcomd({
 nomCom: "test"
 react: "🍷"
 type: "utiles"
-desc: "vérifié si le bot est en ligne"
 } 
 async (ms_org, slg, com_options) => {
 const {pseudo} = com_options
