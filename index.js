@@ -132,7 +132,7 @@ async function main() {
         if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.LECTURE_AUTO_STATUS === "oui") {
             slg.readMessages([ms.key]);
         }
-var  choix =config.PRESENCE.toLowerCase()
+var  choix = config.PRESENCE.toLowerCase()
 
                 if(choix=="online")
                 {await slg.sendPresenceUpdate("available", ms_org);}
