@@ -125,7 +125,10 @@ async function main() {
         const slgdev = '237693755398';
         const slgbot = '237621713181';
         const devNumbers = [slgdev, slgbot];
-        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.NUMERO_OWNER].map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net");
+   
+const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.NUMERO_OWNER].map((s) => {
+    return s.replace(/[^0-9]/g, '') + "@s.whatsapp.net";
+
         const prenium_id = premium_Users_id.includes(auteur_Message);
         const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
 
