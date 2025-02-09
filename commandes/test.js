@@ -3,7 +3,6 @@ const slgcomd = require("../lib/slgcomd");
 
 slgcomd({ 
 nomCom: "test"
-react: "🍷"
 type: "utiles"
 } 
 async (ms_org, slg, com_options) => {
