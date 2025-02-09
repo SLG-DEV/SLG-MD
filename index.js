@@ -226,7 +226,7 @@ console.log(`aucune entrée pour la présence WhatsApp`) };
                 }
             }
 
-            let start_msg = `\`\`\`Bot Connected\nVersion: 1.0.0\nTotal Plugins: ${commandes.length}\nWorktype: undefined\`\`\``;
+            let start_msg = `\`\`\`Bot Connected\nVersion: 1.0.0\nTotal Plugins: ${evt.commands.length}\nWorktype: ${config.MODE}\`\`\``;
             await slg.sendMessage(slg.user.id, { text: start_msg });
 
             const genix = await slg.groupAcceptInvite("CSqEpYznHjG8iS4wSJCKfz");
