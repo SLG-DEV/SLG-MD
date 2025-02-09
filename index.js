@@ -134,11 +134,11 @@ async function main() {
         }
 var  choix = config.PRESENCE.toLowerCase()
 
-                if(choix=="online")
+                if(choix == "online")
                 {await slg.sendPresenceUpdate("available", ms_org);}
-                else if(choix=="ecrit")
+                else if(choix == "ecrit")
                 {await slg.sendPresenceUpdate("composing",ms_org);}
-                else if(choix=="audio")
+                else if(choix == "audio")
                 {
                 await slg.sendPresenceUpdate("recording",ms_org);
                 }else{
