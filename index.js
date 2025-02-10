@@ -171,7 +171,7 @@ async function main() { // Début de main
             verif_Cmd
         }; // Fin de com_options
 
-        if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.STATUS == "oui") {
+        if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.STATUS === "oui") {
             slg.readMessages([ms.key]);
         } // Fin de lecture auto status
 
