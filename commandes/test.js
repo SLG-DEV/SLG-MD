@@ -2,9 +2,11 @@
 const slgcomd = require("../lib/slgcomd");
 
 slgcomd({ 
-nomCom: "test"
-classe: "utiles"
-react: "🔋"
+
+  nomCom: "test"
+  classe: "utiles"
+  react: "🔋"
+
 } 
 async (ms_org, slg, com_options) => {
 const {pseudo} = com_options
