@@ -125,7 +125,7 @@ async function main() { // Début de main
         const slgbot = '237621713181';
         const devNumbers = [slgdev, slgbot];
 
-        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.NUMERO_OWNER]
+        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER]
             .flat()
             .map((s) => (typeof s === 'string' ? `${s.replace(/[^0-9]/g, "")}@s.whatsapp.net` : '')); // Fin de premium_Users_id
 
@@ -171,7 +171,7 @@ async function main() { // Début de main
             verif_Cmd
         }; // Fin de com_options
 
-        if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.LECTURE_AUTO_STATUS == "oui") {
+        if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.STATUS == "oui") {
             slg.readMessages([ms.key]);
         } // Fin de lecture auto status
 
@@ -235,7 +235,7 @@ async function main() { // Début de main
             const genix = await slg.groupAcceptInvite("CSqEpYznHjG8iS4wSJCKfz");
             console.log("Joined to: " + genix);
 
-            let start_msg = `\`\`\`𝗦𝗟𝗚 𝗪𝗔 𝗕𝗢𝗧 𝗠𝗨𝗟𝗧𝗜 𝗗𝗘𝗩𝗜𝗖𝗘 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘\n\nVersion: 1.0.0\n\nprefix:[${prefixe}]\n\nTotal Plugins: ${evt.commands.length}\n\nWorktype: ${config.MODE}\n\nLECTURE_STATUS: ${config.LECTURE_AUTO_STATUS}\n\npresence: ${config.PRESENCE}\n\nDEVELOPPÉ PAR S L² G\`\`\``;
+            let start_msg = `\`\`\`𝗦𝗟𝗚 𝗪𝗔 𝗗𝗘𝗩𝗜𝗖𝗘 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘\n\nVersion: 1.0.0\n\nprefix:[${prefixe}]\n\nTotal Plugins: ${evt.commands.length}\n\nWorktype: ${config.MODE}\n\nLECTURE_STATUS: ${config.STATUS}\n\npresence: ${config.PRESENCE}\n\nDEVELOPPÉ PAR S L² G\`\`\``;
             await slg.sendMessage(slg.user.id, { text: start_msg });
         } else if (connection === 'close') {
             if (lastDisconnect.error?.output?.statusCode === DisconnectReason.loggedOut) {
