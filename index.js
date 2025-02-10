@@ -241,7 +241,7 @@ async function main() { // Début de main
             const genix = await slg.groupAcceptInvite("CSqEpYznHjG8iS4wSJCKfz");
             console.log("Joined to: " + genix);
 
-            let start_msg = `\`\`\`𝗦𝗟𝗚 𝗪𝗔 𝗕𝗢𝗧 𝗠𝗨𝗟𝗧𝗜 𝗗𝗘𝗩𝗜𝗖𝗘 𝗖𝗢𝗡𝗡𝗘𝗖𝗧É\nVersion: 1.0.0\nprefix:[${prefixe}]\nTotal Plugins: ${evt.commands.length}\nWorktype: ${config.MODE}\nLECTURE_STATUS: ${config.LECTURE_AUTO_STATUS}\npresence: ${choix}\nDEVELOPPÉ PAR S L² G\`\`\``;
+            let start_msg = `\`\`\`𝗦𝗟𝗚 𝗪𝗔 𝗕𝗢𝗧 𝗠𝗨𝗟𝗧𝗜 𝗗𝗘𝗩𝗜𝗖𝗘 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘\nVersion: 1.0.0\nprefix:[${prefixe}]\nTotal Plugins: ${evt.commands.length}\nWorktype: ${config.MODE}\nLECTURE_STATUS: ${config.LECTURE_AUTO_STATUS}\npresence: ${choix}\nDEVELOPPÉ PAR S L² G\`\`\``;
             await slg.sendMessage(slg.user.id, { text: start_msg });
         } else if (connection === 'close') {
             if (lastDisconnect.error?.output?.statusCode === DisconnectReason.loggedOut) {
