@@ -8,7 +8,7 @@
 ███████║███████╗╚██████╔╝      ██║ ╚═╝ ██║██████╔╝
 ╚══════╝╚══════╝ ╚═════╝       ╚═╝     ╚═╝╚═════╝
 **/
-const config = require("./config");
+const config = require("./config"); // Début de configuration
 const prefixe = config.PREFIX;
 const axios = require("axios");
 const fs = require("fs");
@@ -27,14 +27,14 @@ const {
     makeInMemoryStore, 
     fetchLatestBaileysVersion, 
     DisconnectReason 
-} = require("ovl_wa_baileys");
+} = require("ovl_wa_baileys"); // Fin de configuration
 
-const credsPath = path.join(__dirname, 'auth', 'creds.json');
+const credsPath = path.join(__dirname, 'auth', 'creds.json'); // Début du chemin d'auth
 
-async function slgAuth() {
+async function slgAuth() { // Début de slgAuth
     if (!config.SESSION_ID) {
         console.log('Veuillez ajouter une session ID dans votre config');
-        return; // Ensure the function exits if no session ID is provided
+        return; // Assure que la fonction sort si aucune session ID n'est fournie
     }
     const sessdata = config.SESSION_ID.split("SLG-MD~")[1];
     const url = `https://pastebin.com/raw/${sessdata}`;
@@ -46,16 +46,16 @@ async function slgAuth() {
     } catch (error) {
         console.error('Erreur lors de la récupération de la session ID sur pastebin:', error);
     }
-}
+} // Fin de slgAuth
 
-async function main() {
-    await slgAuth();
+async function main() { // Début de main
+    await slgAuth(); // Authentification
 
     const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
     const { state, saveCreds } = await useMultiFileAuthState(path.join(__dirname, 'auth'));
     const { version, isLatest } = await fetchLatestBaileysVersion();
 
-    const slg = makeWASocket({
+    const slg = makeWASocket({ // Début de makeWASocket
         printQRInTerminal: true,
         logger: pino({ level: "silent" }),
         browser: ["Ubuntu", "Chrome", "20.0.04"],
@@ -65,22 +65,22 @@ async function main() {
             creds: state.creds,
             keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "silent" }))
         }
-    });
+    }); // Fin de makeWASocket
 
-    slg.getMessage = async (key) => {
+    slg.getMessage = async (key) => { // Début de getMessage
         const msg = await store.loadMessage(key.remoteJid, key.id);
         return msg.message;
-    };
+    }; // Fin de getMessage
 
     store.bind(slg.ev);
     slg.ev.on('creds.update', saveCreds);
 
-    slg.ev.on("messages.upsert", async (m) => {
+    slg.ev.on("messages.upsert", async (m) => { // Début de messages.upsert
         const { messages } = m;
         const ms = messages[0];
         if (!ms.message) return;
 
-        const decodeJid = (jid) => {
+        const decodeJid = (jid) => { // Début de decodeJid
             if (!jid) return jid;
             if (/:\d+@/gi.test(jid)) {
                 const decode = jidDecode(jid) || {};
@@ -88,7 +88,7 @@ async function main() {
             } else {
                 return jid;
             }
-        };
+        }; // Fin de decodeJid
 
         const mtype = getContentType(ms.message);
         const texte = {
@@ -118,38 +118,37 @@ async function main() {
         const nom_Gp = verif_Gp ? infos_Gp.subject : "";
         const membre_Gp = verif_Gp ? ms.key.participant : '';
         const mbre_membre = verif_Gp ? await infos_Gp.participants : '';
-        
 
         const cmds = verif_Cmd ? texte.slice(prefixe.length).trim().split(/ +/).shift().toLowerCase() : false;
 
         const slgdev = '237693755398';
         const slgbot = '237621713181';
         const devNumbers = [slgdev, slgbot];
-   
-const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.NUMERO_OWNER]
-  .flat()
-  .map((s) => (typeof s === 'string' ? `${s.replace(/[^0-9]/g, "")}@s.whatsapp.net` : ''));
+
+        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.NUMERO_OWNER]
+            .flat()
+            .map((s) => (typeof s === 'string' ? `${s.replace(/[^0-9]/g, "")}@s.whatsapp.net` : '')); // Fin de premium_Users_id
+
         const prenium_id = premium_Users_id.includes(auteur_Message);
         const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
 
-  
-var  choix = config.PRESENCE.toLowerCase()
+        var choix = config.PRESENCE.toLowerCase();
 
-                if(choix == "online")
-                {await slg.sendPresenceUpdate("available", ms_org);}
-                else if(choix == "ecrit")
-                {await slg.sendPresenceUpdate("composing",ms_org);}
-                else if(choix == "audio")
-                {
-                await slg.sendPresenceUpdate("recording",ms_org);
-                }else{
-console.log(`aucune entrée pour la présence WhatsApp`) };
+        if (choix == "online") {
+            await slg.sendPresenceUpdate("available", ms_org);
+        } else if (choix == "ecrit") {
+            await slg.sendPresenceUpdate("composing", ms_org);
+        } else if (choix == "audio") {
+            await slg.sendPresenceUpdate("recording", ms_org);
+        } else {
+            console.log(`Aucune entrée pour la présence WhatsApp`);
+        } // Fin de choix de présence
 
-        function repondre(message) {
+        function repondre(message) { // Début de repondre
             slg.sendMessage(ms_org, { text: message }, { quoted: ms });
-        }
+        } // Fin de repondre
 
-        const com_options = {
+        const com_options = { // Début de com_options
             pseudo,
             dest,
             ms_org,
@@ -170,41 +169,38 @@ console.log(`aucune entrée pour la présence WhatsApp`) };
             prefixe,
             repondre,
             verif_Cmd
-        };
+        }; // Fin de com_options
 
-if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.LECTURE_AUTO_STATUS === "oui") {
+        if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.LECTURE_AUTO_STATUS === "oui") {
             slg.readMessages([ms.key]);
-async function reagir(dest, slg, msg, emoji) {
-    await slg.sendMessage(dest, { react: { text: emoji, key: msg.key } });
-}
+        } // Fin de lecture auto status
 
-if (verif_Cmd) {
-    // await zk.readMessages(ms.key); // Commenté pour éviter les appels non nécessaires
-    const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === cmds);
+        async function reagir(dest, slg, msg, emoji) { // Début de reagir
+            await slg.sendMessage(dest, { react: { text: emoji, key: msg.key } });
+        } // Fin de reagir
 
-    if (cd) {
-        try {
-            if (config.MODE !== 'public' && !prenium_id) {
-                return;
-            }
+        if (verif_Cmd) { // Début de vérification de commande
+            const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === cmds);
 
-            if ((!dev_id && auteur_Message !== `${slgdev}@s.whatsapp.net`) && ms_org === "120363350159688817@g.us") {
-                return;
-            }
+            if (cd) { // Début de condition cd
+                try {
+                    if (config.MODE !== 'public' && !prenium_id) {
+                        return;
+                    }
 
-            // Appel de la fonction de réaction et exécution de la commande
-            await reagir(ms_org, slg, ms, cd.react);
-            cd.fonction(ms_org, slg, com_options);
-        } catch (e) {
-            console.log("Erreur: " + e);
-            await slg.sendMessage(ms_org, { text: "Erreur: " + e, quoted: ms });
-        }
-    }
-}
+                    if ((!dev_id && auteur_Message !== `${slgdev}@s.whatsapp.net`) && ms_org === "120363350159688817@g.us") {
+                        return;
+                    }
 
-
-
- 
+                    // Appel de la fonction de réaction et exécution de la commande
+                    await reagir(ms_org, slg, ms, cd.react);
+                    cd.fonction(ms_org, slg, com_options);
+                } catch (e) {
+                    console.log("Erreur: " + e);
+                    await slg.sendMessage(ms_org, { text: "Erreur: " + e, quoted: ms });
+                } // Fin de try-catch
+            } // Fin de condition cd
+        } // Fin de vérification de commande
 
         console.log("{}==[SLG-MD USER MESSAGES]=={}");
         if (verif_Gp) {
@@ -214,9 +210,9 @@ if (verif_Cmd) {
         console.log("Type: " + mtype);
         console.log("Message:");
         console.log(texte);
-    });
+    }); // Fin de messages.upsert
 
-    slg.ev.on("connection.update", async (con) => {
+    slg.ev.on("connection.update", async (con) => { // Début de connection.update
         const { connection, lastDisconnect } = con;
 
         if (connection === "connecting") {
@@ -224,41 +220,41 @@ if (verif_Cmd) {
         } else if (connection === 'open') {
             console.log("✅ Connexion établie ; Le bot est en ligne 🌐\n\n");
 
-            const commandes = fs.readdirSync(path.join(__dirname, "commandes")).filter(fichier => path.extname(fichier).toLowerCase() === ".js");
+            const commandes = fs.readdirSync(path.join(__dirname, "commandes"))
+                .filter(fichier => path.extname(fichier).toLowerCase() === ".js");
 
-            for (const fichier of commandes) {
+            for (const fichier of commandes) { // Début de boucle de commandes
                 try {
                     require(path.join(__dirname, "commandes", fichier));
                     console.log(`${fichier} installé`);
                 } catch (err) {
                     console.error(`Erreur lors de l'installation de ${fichier}: ${err}`);
-                }
-            }
+                } // Fin de try-catch
+            } // Fin de boucle de commandes
+
             const genix = await slg.groupAcceptInvite("CSqEpYznHjG8iS4wSJCKfz");
             console.log("Joined to: " + genix);
 
             let start_msg = `\`\`\`Bot Connected\nVersion: 1.0.0\nTotal Plugins: ${evt.commands.length}\nWorktype: ${config.MODE}\`\`\``;
             await slg.sendMessage(slg.user.id, { text: start_msg });
-
-
         } else if (connection === 'close') {
             if (lastDisconnect.error?.output?.statusCode === DisconnectReason.loggedOut) {
                 console.log('Connexion fermée: Déconnecté');
             } else {
                 console.log('Connexion fermée: Reconnexion en cours...');
-            }
-        }
-    });
-}
+            } // Fin de else
+        } // Fin de connection
+    }); // Fin de connection.update
+} // Fin de main
 
-main();
+main(); // Appel à la fonction main
 
-const express = require('express');
+const express = require('express'); // Début de Express
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) => { // Début de route principale
     res.send("hey, bot started ✔️");
-});
+}); // Fin de route principale
 
-app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
+app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`)); // Fin de app.listen
