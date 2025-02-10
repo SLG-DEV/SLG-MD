@@ -232,12 +232,6 @@ async function main() { // Début de main
                 } // Fin de try-catch
             } // Fin de boucle de commandes
 
-    console.log("UTILISATEUR SLG INFORMATIONS");
-    console.log(`nom:        ${pseudo}`);
-    console.log(`numero:    ${id_Bot_N}`);
-    console.log(`statut:      connecté`);
-         
-
             const genix = await slg.groupAcceptInvite("CSqEpYznHjG8iS4wSJCKfz");
             console.log("Joined to: " + genix);
 
