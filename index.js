@@ -175,7 +175,7 @@ console.log(`aucune entrée pour la présence WhatsApp`) };
         };
 
         if (verif_Cmd) { 
-                    const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === cmds || (slgcomd.alias && slgcomd.alias.includes(cmds)));
+                                         const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === (cmds));
 
 
             if (cd) {
