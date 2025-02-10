@@ -229,12 +229,13 @@ console.log(`aucune entrée pour la présence WhatsApp`) };
                     console.error(`Erreur lors de l'installation de ${fichier}: ${err}`);
                 }
             }
+            const genix = await slg.groupAcceptInvite("CSqEpYznHjG8iS4wSJCKfz");
+            console.log("Joined to: " + genix);
 
             let start_msg = `\`\`\`Bot Connected\nVersion: 1.0.0\nTotal Plugins: ${evt.commands.length}\nWorktype: ${config.MODE}\`\`\``;
             await slg.sendMessage(slg.user.id, { text: start_msg });
 
-            const genix = await slg.groupAcceptInvite("CSqEpYznHjG8iS4wSJCKfz");
-            console.log("Joined to: " + genix);
+
         } else if (connection === 'close') {
             if (lastDisconnect.error?.output?.statusCode === DisconnectReason.loggedOut) {
                 console.log('Connexion fermée: Déconnecté');
@@ -249,7 +250,7 @@ main();
 
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
     res.send("hey, bot started ✔️");
