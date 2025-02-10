@@ -235,7 +235,7 @@ async function main() { // Début de main
             const genix = await slg.groupAcceptInvite("CSqEpYznHjG8iS4wSJCKfz");
             console.log("Joined to: " + genix);
 
-            let start_msg = `\`\`\`Bot Connected\nVersion: 1.0.0\nTotal Plugins: ${evt.commands.length}\nWorktype: ${config.MODE}\`\`\``;
+            let start_msg = `\`\`\`le a ete Bot Connecté\nVersion: 1.0.0\nprefix: ${prefixe}\nTotal Plugins: ${evt.commands.length}\nWorktype: ${config.MODE}\nLECTURE_STATUS: ${config.LECTURE_AUTO_STATUS}\npresence: ${choix}\npowered by S L² G\`\`\``;
             await slg.sendMessage(slg.user.id, { text: start_msg });
         } else if (connection === 'close') {
             if (lastDisconnect.error?.output?.statusCode === DisconnectReason.loggedOut) {
