@@ -3,7 +3,7 @@ const slgcomd = require("../lib/slgcomd");
 
 slgcomd({ 
 nomCom: "test"
-type: "utiles"
+classe: "utiles"
 react: "🔋"
 desc: "vérifie si le bot est en ligne"
 } 
