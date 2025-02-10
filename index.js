@@ -132,9 +132,7 @@ const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.NUMERO_OWNER]
         const prenium_id = premium_Users_id.includes(auteur_Message);
         const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
 
-        if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.LECTURE_AUTO_STATUS === "oui") {
-            slg.readMessages([ms.key]);
-        }
+  
 var  choix = config.PRESENCE.toLowerCase()
 
                 if(choix == "online")
@@ -174,8 +172,20 @@ console.log(`aucune entrée pour la présence WhatsApp`) };
             verif_Cmd
         };
 
-        if (verif_Cmd) { 
-                                         const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === (cmds));
+if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.LECTURE_AUTO_STATUS === "oui") {
+            slg.readMessages([ms.key]);}
+
+
+
+
+        function reagir(dest, slg, msg, emoji) {
+    await slg.sendMessage(dest, { react: { text: emoji, key: msg.key } });
+}   
+         
+         
+            if (verif_Cmd) {
+                //await await zk.readMessages(ms.key);
+                const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === (cmds));
 
 
             if (cd) {
@@ -188,18 +198,21 @@ console.log(`aucune entrée pour la présence WhatsApp`) };
                         return;
                     }
 
-                    if (cd.react) {
-                        await slg.sendMessage(ms_org, { react: { text: cd.react, key: ms.key } });
-                    } else { 
-                        await slg.sendMessage(ms_org, { react: { text: "🍷", key: ms.key } });
+
+                if (cd) {
+                    try {
+                        reagir(ms_org, slg, ms, cd.react);
+                        cd.fonction(ms_org, slg, com_options);
                     }
-                    cd.fonction(ms_org, slg, com_options);
-                } catch (e) {
-                    console.log("Erreur: " + e);
-                    slg.sendMessage(ms_org, { text: "Erreur: " + e }, { quoted: ms });
+                    catch (e) {
+                        console.log("erreur" + e);
+                        slg.sendMessage(ms_org), { text: "erreur"" + e }, { quoted: ms });
+                    }
                 }
             }
-        }
+
+
+ 
 
         console.log("{}==[SLG-MD USER MESSAGES]=={}");
         if (verif_Gp) {
