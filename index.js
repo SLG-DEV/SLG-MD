@@ -173,43 +173,35 @@ console.log(`aucune entrée pour la présence WhatsApp`) };
         };
 
 if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.LECTURE_AUTO_STATUS === "oui") {
-            slg.readMessages([ms.key]);}
-
-
-
-
-        function reagir(dest, slg, msg, emoji) {
+            slg.readMessages([ms.key]);
+async function reagir(dest, slg, msg, emoji) {
     await slg.sendMessage(dest, { react: { text: emoji, key: msg.key } });
-}   
-         
-         
-            if (verif_Cmd) {
-                //await await zk.readMessages(ms.key);
-                const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === (cmds));
+}
 
+if (verif_Cmd) {
+    // await zk.readMessages(ms.key); // Commenté pour éviter les appels non nécessaires
+    const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === cmds);
 
-            if (cd) {
-                try {
-                    if (config.MODE !== 'public' && !prenium_id) {
-                        return;
-                    }
-
-                    if ((!dev_id && auteur_Message !== slgdev + '@s.whatsapp.net') && ms_org === "120363350159688817@g.us") {
-                        return;
-                    }
-
-
-                if (cd) {
-                    try {
-                        reagir(ms_org, slg, ms, cd.react);
-                        cd.fonction(ms_org, slg, com_options);
-                    }
-                    catch (e) {
-                        console.log("erreur" + e);
-                        slg.sendMessage(ms_org), { text: "erreur"" + e }, { quoted: ms });
-                    }
-                }
+    if (cd) {
+        try {
+            if (config.MODE !== 'public' && !prenium_id) {
+                return;
             }
+
+            if ((!dev_id && auteur_Message !== `${slgdev}@s.whatsapp.net`) && ms_org === "120363350159688817@g.us") {
+                return;
+            }
+
+            // Appel de la fonction de réaction et exécution de la commande
+            await reagir(ms_org, slg, ms, cd.react);
+            cd.fonction(ms_org, slg, com_options);
+        } catch (e) {
+            console.log("Erreur: " + e);
+            await slg.sendMessage(ms_org, { text: "Erreur: " + e, quoted: ms });
+        }
+    }
+}
+
 
 
  
