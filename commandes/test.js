@@ -1,5 +1,5 @@
 // the first command created 
-const slgcomd = require("../lib/slgcomd");
+const { slgcomd } = require("../lib/slgcomd");
 
 slgcomd({ 
   nomCom: "test",
