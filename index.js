@@ -15,6 +15,7 @@ const fs = require("fs");
 const pino = require("pino");
 const path = require('path');
 let evt = require(path.join(__dirname, "/lib/slgcomd"));
+
 const { 
     default: makeWASocket, 
     useMultiFileAuthState, 
@@ -134,11 +135,11 @@ async function main() { // Début de main
 
         var choix = config.PRESENCE.toLowerCase();
 
-        if (choix == "online") {
+        if (choix === "online") {
             await slg.sendPresenceUpdate("available", ms_org);
-        } else if (choix == "ecrit") {
+        } else if (choix === "ecrit") {
             await slg.sendPresenceUpdate("composing", ms_org);
-        } else if (choix == "audio") {
+        } else if (choix === "audio") {
             await slg.sendPresenceUpdate("recording", ms_org);
         } else {
             console.log(`Aucune entrée pour la présence WhatsApp`);
@@ -175,12 +176,12 @@ async function main() { // Début de main
             slg.readMessages([ms.key]);
         } // Fin de lecture auto status
 
-        async function reagir(dest, slg, msg, emoji) { // Début de reagir
+        async function reagir(dest, msg, emoji) { // Début de reagir
             await slg.sendMessage(dest, { react: { text: emoji, key: msg.key } });
         } // Fin de reagir
 
         if (verif_Cmd) { // Début de vérification de commande
-            const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === (cmds)) || evt.commands.find((slgcomd) => slgcomd.alias && cmd.alias.includes(cmds))
+            const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === cmds) || evt.commands.find((slgcomd) => slgcomd.alias && slgcomd.alias.includes(cmds));
 
             if (cd) { // Début de condition cd
                 try {
@@ -193,8 +194,8 @@ async function main() { // Début de main
                     }
 
                     // Appel de la fonction de réaction et exécution de la commande
-                    await reagir(ms_org, slg, ms, cd.react);
-                    cd.fonction(ms_org, slg, com_options);
+                    await reagir(ms_org, ms, cd.react);
+                    await cd.fonction(ms_org, slg, com_options);
                 } catch (e) {
                     console.log("Erreur: " + e);
                     await slg.sendMessage(ms_org, { text: "Erreur: " + e, quoted: ms });
