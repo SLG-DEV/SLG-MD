@@ -3,8 +3,8 @@ const slgcomd = require("../lib/slgcomd");
 
 slgcomd({ 
 
-  nomCom: "test"
-  classe: "utiles"
+  nomCom: "test",
+  classe: "utiles",
   react: "🔋"
 
 } 
