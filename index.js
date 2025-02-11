@@ -181,7 +181,7 @@ async function main() { // Début de main
         } // Fin de reagir
 
         if (verif_Cmd) { // Début de vérification de commande
-            const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === cmds) || evt.commands.find((slgcomd) => slgcomd.alias && slgcomd.alias.includes(cmds));
+                    const cd = evt.commands.find((slgcomd) => slgcomd.nomCom === cmds || (slgcomd.alias && slgcomd.alias.includes(cmds)));
 
             if (cd) { // Début de condition cd
                 try {
