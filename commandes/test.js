@@ -15,4 +15,4 @@ console.log("le bot est en ligne");
 const rl =  "https://files.catbox.moe/uih7xz.jpg"
 slg.sendMessage(ms_org,{image:{url: rl}, caption: mess})
 
-})
+});
