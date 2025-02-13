@@ -24,9 +24,9 @@ slgcomd({
 
 async (ms_org, slg) => {
 const pi = Date.now();
- await slg.sendMessage(ms_org,{text: `ping.....`});
+ await slg.sendMessage(ms_org,{text: `*_ping....._*`});
 const ng = Date.now();
-
+console.log("ping...");
 const ping = ng - pi 
 
 slg.sendMessage(ms_org,{text:`> ${ping} ms`});
