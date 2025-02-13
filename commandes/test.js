@@ -17,12 +17,12 @@ async (ms_org, slg, com_options) => {
 
 
 slgcomd({  
-    nom nom: "ping",
+    nomCom: "ping",
     classe: "utiles",
    react: "⚡"
 },
 
-async (ms_org, slg, com_options) => {
+async (ms_org, slg) => {
 const pi = Date.now();
  await slg.sendMessage(ms_org,{text: `ping.....`});
 const ng = Date.now();
@@ -30,5 +30,5 @@ const ng = Date.now();
 const ping = ng - pi 
 
 slg.sendMessage(ms_org,{text:`> ${ping} ms`});
-)
+});
 
