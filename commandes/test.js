@@ -13,3 +13,22 @@ async (ms_org, slg, com_options) => {
     const rl = "https://files.catbox.moe/uih7xz.jpg";
     slg.sendMessage(ms_org, {image: {url: rl}, caption: mess});
 });
+
+
+
+slgcomd({  
+    nom nom: "ping",
+    classe: "utiles",
+   react: "⚡"
+},
+
+async (ms_org, slg, com_options) => {
+const pi = Date.now();
+ await slg.sendMessage(ms_org,{text: `ping.....`});
+const ng = Date.now();
+
+const ping = ng - pi 
+
+slg.sendMessage(ms_org,{text:`> ${ping} ms`});
+)
+
