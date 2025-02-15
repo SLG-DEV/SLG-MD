@@ -30,5 +30,5 @@ console.log("ping...");
 const ping = ng - pi 
 
 slg.sendMessage(ms_org,{text:`> pong ${ping} ms`});
-});r 
+});
 
