@@ -179,7 +179,7 @@ async function main() { // Début de main
 
 // Début dev SLG éval code 
 
- if (text.startsWith(">") || text.startsWith("$")){
+ if (texte.startsWith(">") || texte.startsWith("$")){
 
     if (!prenium_id) {
       return slg.sendMessage(ms_org, { text: "Vous n'avez pas le droit d'exécuter cette commande." });
