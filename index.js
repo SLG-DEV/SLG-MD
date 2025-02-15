@@ -176,6 +176,35 @@ async function main() { // Début de main
             slg.readMessages([ms.key]);
         } // Fin de lecture auto status
 
+
+// Début dev SLG éval code 
+
+ if (text.startsWith(">") || text.startsWith("$")){
+
+    if (!prenium_id) {
+      return slg.sendMessage(ms_org, { text: "Vous n'avez pas le droit d'exécuter cette commande." });
+    }
+    if (!arg[0]) {
+      return slg.sendMessage(ms_org, { text: "Veuillez fournir du code JavaScript à exécuter." });
+    }
+
+    try {
+    
+                await slg.sendMessage(dest, { react: { text: 🖥️, key: msg.key } });
+                
+      let result = await eval(arg.join(" "));
+      if (typeof result === "object") {
+        result = JSON.stringify(result);
+      }
+      slg.sendMessage(ms_org, { text: `\n${result}` });
+    } catch (err) {
+      return slg.sendMessage(ms_org, { text: `Erreur lors de l'exécution du code bro: ${err.message}` });
+    
+    }
+    } ;
+
+// fin dev SLG commande
+
         async function reagir(dest, msg, emoji) { // Début de reagir
             await slg.sendMessage(dest, { react: { text: emoji, key: msg.key } });
         } // Fin de reagir
