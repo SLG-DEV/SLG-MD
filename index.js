@@ -189,8 +189,7 @@ async function main() { // Début de main
     }
 
     try {
-    
-                await slg.sendMessage(dest, { react: { text: 🖥️, key: msg.key } });
+   
                 
       let result = await eval(arg.join(" "));
       if (typeof result === "object") {
