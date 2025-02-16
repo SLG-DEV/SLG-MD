@@ -3,7 +3,7 @@ const { slgcomd } = require("../lib/slgcomd");
 const os = require("os");
 const {ZONE_DE_TEMPS} = require("../config");
 const rl = "https://files.catbox.moe/uih7xz.jpg";
-
+const { runtime } = require("../lib/fonctions");
 slgcomd({ 
   nomCom: "test",
   classe: "utiles",
@@ -36,14 +36,6 @@ slg.sendMessage(ms_org,{text:`> pong ${ping} ms`});
 });
 
 
-const runtime = (seconds) => {
-  const J = Math.floor(seconds / (3600 * 24));
-  const H = Math.floor((seconds % (3600 * 24)) / 3600);
-  const M = Math.floor((seconds % 3600) / 60);
-  const S = Math.floor(seconds % 60);
-  return `${J > 0 ? J + " J " : ""}${H > 0 ? H + " H " : ""}${M > 0 ? M + " M " : ""}${S > 0 ? S + " S" : ""}`;
-};
-
 slgcomd({
 nomCom: "alive",
 desc: "temps de fonctionnement",
@@ -55,7 +47,10 @@ const [date, time] = new Date()
       .toLocaleString("en-IN", { timeZone: ZONE_DE_TEMPS })
       .split(",");
 
-const mes = `*NOUS SOMMES LE ${date} AVEC UN UPTIME DE ${runtime(process.uptime()).trim()} A ${time}*`
+const m = `*NOUS SOMMES LE ${date}*`
+const es = `*AVEC UN UPTIME DE ${runtime(process.uptime())} A ${time}*`
+
+const mes = m + es
 
 slg.sendMessage(ms_org,{image: rl }, {caption: mes});
 
