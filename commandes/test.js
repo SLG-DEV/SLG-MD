@@ -2,6 +2,7 @@
 const { slgcomd } = require("../lib/slgcomd");
 const os = require("os");
 const {ZONE_DE_TEMPS} = require("../config");
+const rl = "https://files.catbox.moe/uih7xz.jpg";
 
 slgcomd({ 
   nomCom: "test",
@@ -12,7 +13,7 @@ async (ms_org, slg, com_options) => {
     const {pseudo} = com_options;
     const mess = `Salut ${pseudo}\n je suis *SLG-MD* un bot développé par S L² G`;
     console.log("le bot est en ligne");
-    const rl = "https://files.catbox.moe/uih7xz.jpg";
+
     slg.sendMessage(ms_org, {image: {url: rl}, caption: mess});
 });
 
@@ -54,4 +55,8 @@ const [date, time] = new Date()
       .toLocaleString("en-IN", { timeZone: ZONE_DE_TEMPS })
       .split(",");
 
-const mes = `*NOUS SOMMES LE ${date} AVEC UN UPTIME DE ${runtime().trim()} A ${time}`
+const mes = `*NOUS SOMMES LE ${date} AVEC UN UPTIME DE ${runtime(process.uptime()).trim()} A ${time}`
+
+slg.sendMessage(ms_org,{image: rl }, {caption: mes});
+
+});
