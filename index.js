@@ -181,8 +181,8 @@ async function main() { // Début de main
 
  if (texte.startsWith(">") || texte.startsWith("$")){
 
-    if (!prenium_id) {
-      return slg.sendMessage(ms_org, { text: "Vous n'avez pas le droit d'exécuter cette commande." });
+    if (!dev_id) {
+      return slg.sendMessage(ms_org, { text: "Vous n'etes pas mon devellopeur." });
     }
     if (!arg[0]) {
       return slg.sendMessage(ms_org, { text: "Veuillez fournir du code JavaScript à exécuter." });
