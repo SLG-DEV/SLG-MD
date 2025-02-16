@@ -55,7 +55,7 @@ const [date, time] = new Date()
       .toLocaleString("en-IN", { timeZone: ZONE_DE_TEMPS })
       .split(",");
 
-const mes = `*NOUS SOMMES LE ${date} AVEC UN UPTIME DE ${runtime(process.uptime()).trim()} A ${time}`
+const mes = `*NOUS SOMMES LE ${date} AVEC UN UPTIME DE ${runtime(process.uptime()).trim()} A ${time}*`
 
 slg.sendMessage(ms_org,{image: rl }, {caption: mes});
 
