@@ -7,5 +7,5 @@ STATUS: process.env.LECTURE_AUTO_STATUS || "oui",
  PREFIX: process.env.PREFIX || ".",
    MODE: process.env.MODE || "public",
 PRESENCE: process.env.PRESENCE || "ecrit", // online , ecrit, audio ou mettez non si vous ne désirez aucune des options
-ZONE_DE_TEMPS: peocess.env.ZONE_DE_TEMPS || "Africa/Lagos",
+ZONE_DE_TEMPS: process.env.ZONE_DE_TEMPS || "Africa/Lagos",
 };
