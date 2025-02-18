@@ -52,7 +52,7 @@ const time = now.toLocaleTimeString('en-US', {timeZone: ZONE_DE_TEMPS});
 
 const uptime = runtime(process.uptime());
 
-const m = `*NOUS SOMMES ${jour} LE ${date}*`
+const m = `*NOUS SOMMES ${jour} LE ${date}\n*`
 const es = `*AVEC UN UPTIME DE ${uptime} A ${time}*`
 
 const mes = m + es
