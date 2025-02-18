@@ -37,27 +37,24 @@ slg.sendMessage(ms_org,{text:`> pong ${ping} ms`});
 
 
 slgcomd({
-nomCom: "alive",
-classe: "utiles",
-desc: "temps de fonctionnement",
-react "🍷"
-}, 
-async ( ms_org, slg ) => 
-{ 
-const timeZone = 'Africa/Lagos';
+    nomCom: "alive",
+    classe: "utiles",
+    desc: "temps de fonctionnement",
+    react: "🍷"  // Ajout d'un deux-points pour corriger la syntaxe
+}, async (ms_org, slg) => {
+    const timeZone = 'Africa/Lagos';
+    const now = new Date();  // Déclaration de 'now' pour obtenir la date actuelle
 
- const jour = now.toLocaleDateString('en-US', { timeZone, weekday: 'long' });
+    const jour = now.toLocaleDateString('en-US', { timeZone, weekday: 'long' });
+    const time = now.toLocaleTimeString('en-US', { timeZone });  // Correction de 'ZONE_DE_TEMPS' à 'timeZone'
+    const date = now.toLocaleDateString('en-US', { timeZone });  // Correction de 'ZONE_DE_TEMPS' à 'timeZone'
 
-const time = now.toLocaleTimeString('en-US', {timeZone: ZONE_DE_TEMPS});
-        const date = now.toLocaleDateString('en-US', {timeZone: ZONE_DE_TEMPS);
+    const uptime = runtime(process.uptime());
 
-const uptime = runtime(process.uptime());
+    const m = `*NOUS SOMMES ${jour} LE ${date}\n*`;
+    const es = `*AVEC UN UPTIME DE ${uptime} À ${time}*`;  // Correction de 'A' à 'À'
 
-const m = `*NOUS SOMMES ${jour} LE ${date}\n*`
-const es = `*AVEC UN UPTIME DE ${uptime} A ${time}*`
+    const mes = m + es;
 
-const mes = m + es
-
-slg.sendMessage(ms_org,{image: rl }, {caption: mes});
-
+    slg.sendMessage(ms_org, { image: rl }, { caption: mes });
 });
