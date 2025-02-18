@@ -38,6 +38,7 @@ slg.sendMessage(ms_org,{text:`> pong ${ping} ms`});
 
 slgcomd({
 nomCom: "alive",
+classe: "utiles",
 desc: "temps de fonctionnement",
 react "🍷"
 }, 
