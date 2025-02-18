@@ -43,12 +43,17 @@ react "🍷"
 }, 
 async ( ms_org, slg ) => 
 { 
-const [date, time] = new Date()
-      .toLocaleString("en-IN", { timeZone: ZONE_DE_TEMPS })
-      .split(",");
+const timeZone = 'Africa/Lagos';
 
-const m = `*NOUS SOMMES LE ${date}*`
-const es = `*AVEC UN UPTIME DE ${runtime(process.uptime())} A ${time}*`
+ const jour = now.toLocaleDateString('en-US', { timeZone, weekday: 'long' });
+
+const time = now.toLocaleTimeString('en-US', {timeZone: ZONE_DE_TEMPS});
+        const date = now.toLocaleDateString('en-US', {timeZone: ZONE_DE_TEMPS);
+
+const uptime = runtime(process.uptime());
+
+const m = `*NOUS SOMMES ${jour} LE ${date}*`
+const es = `*AVEC UN UPTIME DE ${uptime} A ${time}*`
 
 const mes = m + es
 
