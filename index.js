@@ -178,9 +178,10 @@ async function main() { // Début de main
 
 
 // Début dev SLG éval code 
-switch (cmds) {
-case 'eval': {   
-if (texte.startsWith(">") || texte.startsWith("$")) {
+let set = texte.startsWith(">") || texte.startsWith("$");
+switch (set) {
+case '>': {   
+
     if (!dev_id) {
       return slg.sendMessage(ms_org, { text: "Vous n'êtes pas mon développeur." });
     }
@@ -198,7 +199,7 @@ if (texte.startsWith(">") || texte.startsWith("$")) {
     } catch (err) {
       return slg.sendMessage(ms_org, { text: `Erreur lors de l'exécution du code : ${err.message}` });
     }
-  }                                                                                  
+                                                                                  
 
 break;
 
