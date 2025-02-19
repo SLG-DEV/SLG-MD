@@ -9,7 +9,7 @@
 ╚══════╝╚══════╝ ╚═════╝       ╚═╝     ╚═╝╚═════╝
 **/
 const config = require("./config"); // Début de configuration
-const prefixe = config.PREFIX;
+const prefixe = config.PREFIX || ''
 const axios = require("axios");
 const fs = require("fs");
 const pino = require("pino");
@@ -178,8 +178,9 @@ async function main() { // Début de main
 
 
 // Début dev SLG éval code 
-case 'eval': {
-  if (texte.startsWith(">") || texte.startsWith("$")) {
+switch (cmds) {
+case 'eval': {   
+if (texte.startsWith(">") || texte.startsWith("$")) {
     if (!dev_id) {
       return slg.sendMessage(ms_org, { text: "Vous n'êtes pas mon développeur." });
     }
@@ -197,9 +198,9 @@ case 'eval': {
     } catch (err) {
       return slg.sendMessage(ms_org, { text: `Erreur lors de l'exécution du code : ${err.message}` });
     }
-  }
-  break;
-}
+  }                                                                                  
+
+break;
 
 // fin dev SLG commande
 
