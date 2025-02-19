@@ -178,6 +178,7 @@ async function main() { // Début de main
 
 
 // Début dev SLG éval code 
+case 'eval' :
 
  if (texte.startsWith(">") || texte.startsWith("$")){
 
@@ -201,6 +202,8 @@ async function main() { // Début de main
     
     }
     } ;
+
+break 
 
 // fin dev SLG commande
 
