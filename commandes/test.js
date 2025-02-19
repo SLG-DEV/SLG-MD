@@ -41,7 +41,8 @@ slgcomd({
     classe: "utiles",
     desc: "temps de fonctionnement",
     react: "🍷"  // Ajout d'un deux-points pour corriger la syntaxe
-}, async (ms_org, slg) => {
+}, async (ms_org, slg) => { 
+try{
     const timeZone = 'Africa/Lagos';
     const now = new Date();  // Déclaration de 'now' pour obtenir la date actuelle
 
@@ -57,4 +58,7 @@ slgcomd({
     const mes = m + es;
 
     slg.sendMessage(ms_org, { image: rl }, { caption: mes });
+}catch(err){
+slg.sendMessage(ms_org,{text: err});
+}
 });
