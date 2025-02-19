@@ -179,12 +179,11 @@ async function main() { // Début de main
 
 // Début dev SLG éval code 
 case 'eval': {
-
   if (texte.startsWith(">") || texte.startsWith("$")) {
-
     if (!dev_id) {
       return slg.sendMessage(ms_org, { text: "Vous n'êtes pas mon développeur." });
     }
+
     if (!arg[0]) {
       return slg.sendMessage(ms_org, { text: "Veuillez fournir du code JavaScript à exécuter." });
     }
@@ -198,12 +197,9 @@ case 'eval': {
     } catch (err) {
       return slg.sendMessage(ms_org, { text: `Erreur lors de l'exécution du code : ${err.message}` });
     }
-
   }
-}
-
   break;
-
+}
 
 // fin dev SLG commande
 
