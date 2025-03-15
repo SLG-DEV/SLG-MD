@@ -281,7 +281,52 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => { // Début de route principale
-    res.send("hey, bot started ✔️");
+    res.send(`<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLG BOT</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Fond gris */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            border: 5px solid transparent; /* Cadre transparent pour le dégradé */
+            border-radius: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Dégradé multicolore */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            color: #333; /* Couleur du titre */
+            text-align: center;
+        }
+        h2 {
+            color: #555; /* Couleur du sous-titre */
+            text-align: center;
+        }
+        p {
+            color: #666; /* Couleur du texte */
+            line-height: 1.6;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue sur SLG-MD</h1>
+        <h2>Votre assistant WhatsApp</h2>
+        <p>Je suis <strong>SLG-MD</strong>, un bot WhatsApp en français multifonctions créé par <strong>SLG</strong> dans le but d'enrichir votre expérience sur les innombrables fonctionnalités que peut vous offrir les bots sur la plateforme WhatsApp.</p>
+    </div>
+</body>
+</html>
+`);
 }); // Fin de route principale
 
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`)); // Fin de app.listen
