@@ -16,6 +16,14 @@ const pino = require("pino");
 const path = require('path');
 let evt = require(path.join(__dirname, "/lib/slgcomd"));
 
+let prefa
+ 
+if(prefixe == "null" || prefixe == "undifined" || prefixe == ""){
+prefa = ""
+
+}
+
+
 const { 
     default: makeWASocket, 
     useMultiFileAuthState, 
@@ -114,7 +122,7 @@ async function main() { // Début de main
         const mr = ms.message.extendedTextMessage?.contextInfo?.mentionedJid;
         const auteur_Message = verif_Gp ? ms.key.participant : decodeJid(ms.key.fromMe ? id_Bot : ms.key.remoteJid);
         const arg = texte ? texte.trim().split(/ +/).slice(1) : null;
-        const verif_Cmd = texte ? texte.startsWith(prefixe) : false;
+        const verif_Cmd = texte ? texte.startsWith(prefixe) || texte.startsWith(prefa) : false;
         const infos_Gp = verif_Gp ? await slg.groupMetadata(ms_org) : "";
         const nom_Gp = verif_Gp ? infos_Gp.subject : "";
         const membre_Gp = verif_Gp ? ms.key.participant : '';
