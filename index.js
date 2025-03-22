@@ -323,7 +323,7 @@ app.get("/", (req, res) => { // Début de route principale
             text-align: center;
         }
         p {
-            color: #666; /* Couleur du texte */
+            color: #759; /* Couleur du texte */
             line-height: 1.6;
             text-align: justify;
         }
@@ -333,7 +333,7 @@ app.get("/", (req, res) => { // Début de route principale
     <div class="container">
         <h1>Bienvenue sur SLG-MD</h1>
         <h2>Votre assistant WhatsApp</h2>
-        <p>Je suis <strong>SLG-MD</strong>, un bot WhatsApp en français multifonctions créé par <strong>SLG</strong> dans le but d'enrichir votre expérience sur les innombrables fonctionnalités que peut vous offrir les bots sur la plateforme WhatsApp.</p>
+        <p>Je suis <strong>SLG-MD</strong>, un bot WhatsApp en français multifonctions créé par <strong>SLG</strong> dans le but d'enrichir votre expérience sur les innombrables fonctionnalitées que peut vous offrir les bots sur la plateforme WhatsApp.</p>
     </div>
 </body>
 </html>
