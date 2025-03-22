@@ -16,12 +16,12 @@ const pino = require("pino");
 const path = require('path');
 let evt = require(path.join(__dirname, "/lib/slgcomd"));
 
-let prefa
+let prefa;
  
 if(prefixe == "null" || prefixe == "undifined" || prefixe == ""){
 prefa = ""
 
-}
+};
 
 
 const { 
