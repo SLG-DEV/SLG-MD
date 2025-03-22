@@ -22,7 +22,7 @@ if(pri == "null" || pri == "undifined" || pri == ""){
 prefixe = ""
 
 }else{
-prefixe = config.PREFIX || '' 
+prefixe = config.PREFIX
 
 };
 
