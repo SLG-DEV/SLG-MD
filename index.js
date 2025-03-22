@@ -191,7 +191,7 @@ async function main() { // Début de main
 // Début dev SLG éval code 
 if ( texte.startsWith(">") || texte.startsWith("$")){
     if (!dev_id) {
-      return slg.sendMessage(ms_org, { text: "Vous n'êtes pas mon développeur." });
+      return 
     }
 
     if (!arg[0]) {
