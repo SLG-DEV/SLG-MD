@@ -64,24 +64,15 @@ let sessdata
             console.error('Erreur lors de la récupération de la session ID sur pastebin:', error);
         }
     } else if (config.SESSION_ID.startsWith("SLG_MD=")) {
-        sessdata = config.SESSION_ID.split("SLG_MD=")[1];
-        const filer = File.fromURL(`https://mega.nz/file/${sessdata}`);
-        
-        filer.download((err, data) => {
-            if (err) {
-                console.error('Erreur lors du téléchargement depuis Mega:', err);
-                return; // Sort de la fonction en cas d'erreur
-            }
-            fs.writeFile(__dirname + '/auth/creds.json', data, (writeErr) => {
-                if (writeErr) {
-                    console.error('Erreur lors de l\'écriture du fichier:', writeErr);
-                } else {
-                    console.log("Session téléchargée par Mega session✅...");
-                }
-            });
-        });
-    } else { 
-        console.log("Erreur : format de SESSION_ID non reconnu");
+        sessdata = config.SESSION_ID.split("SLG_MD=")[1]
+const filer = File.fromURL(`https://mega.nz/file/${sessdata}`);
+filer.download((err, data) => {
+    if (err) throw err;
+    fs.writeFile(__dirname + '/auth/creds.json', data, () => {
+        console.log("Session téléchargee geave a mega✅");
+    });
+});
+
     } // Fin de slgAuth
 }
 
