@@ -27,6 +27,7 @@
     "gtts": "^0.2.1",
     "node-catbox": "^3.3.0",
     "node-fetch": "3.2.2",
+    "megajs": "^1.1.0",
     "os": "^0.1.2",
     "ovl_wa_baileys": "^1.0.1",
     "path": "^0.12.7",
