@@ -48,28 +48,41 @@ async function slgAuth() { // Début de slgAuth
         console.log('Veuillez ajouter une session ID dans votre config');
         return; // Assure que la fonction sort si aucune session ID n'est fournie
     }
-if ( sessdata.startsWith("SLG-MD~")){
-    const sessdata = config.SESSION_ID.split("SLG-MD~")[1];
-    const url = `https://pastebin.com/raw/${sessdata}`;
-    try {
-        const response = await axios.get(url);
-        const data = typeof response.data === 'string' ? response.data : JSON.stringify(response.data);
-        fs.writeFileSync(credsPath, data, 'utf8');
-        console.log("🔒 Session téléchargée avec succès !!");
-    } catch (error) {
-        console.error('Erreur lors de la récupération de la session ID sur pastebin:', error);
-    }else if (sesdata.StartsWiths("SLG_MD=")){
-const sesdata = config.SESSION_ID.split("SLG-MD=")[1];
-const filer = File.fromURL(`https://mega.nz/file/${sesdata}`)
-filer.download((err, data) => {
-if(err) throw err
-fs.writeFile(__dirname + '/auth/creds.json', data, () => {
-console.log("Session téléchargée par mega session✅...")
+
+    // Vérification du format de SESSION_ID
+    if (config.SESSION_ID.startsWith("SLG-MD~")) {
+        const sessdata = config.SESSION_ID.split("SLG-MD~")[1];
+        const url = `https://pastebin.com/raw/${sessdata}`;
+        try {
+            const response = await axios.get(url);
+            const data = typeof response.data === 'string' ? response.data : JSON.stringify(response.data);
+            fs.writeFileSync(credsPath, data, 'utf8');
+            console.log("🔒 Session téléchargée avec succès !!");
+        } catch (error) {
+            console.error('Erreur lors de la récupération de la session ID sur pastebin:', error);
+        }
+    } else if (config.SESSION_ID.startsWith("SLG_MD=")) {
+        const sessdata = config.SESSION_ID.split("SLG_MD=")[1];
+        const filer = File.fromURL(`https://mega.nz/file/${sessdata}`);
+        
+        filer.download((err, data) => {
+            if (err) {
+                console.error('Erreur lors du téléchargement depuis Mega:', err);
+                return; // Sort de la fonction en cas d'erreur
+            }
+            fs.writeFile(__dirname + '/auth/creds.json', data, (writeErr) => {
+                if (writeErr) {
+                    console.error('Erreur lors de l\'écriture du fichier:', writeErr);
+                } else {
+                    console.log("Session téléchargée par Mega session✅...");
+                }
+            });
+        });
+    } else { 
+        console.log("Erreur : format de SESSION_ID non reconnu");
+    } // Fin de slgAuth
 }
-} else { 
-console.log("erreur")
-}
-} // Fin de slgAuth
+
 
 async function main() { // Début de main
     await slgAuth(); // Authentification
