@@ -65,7 +65,7 @@ async function slgAuth() { // Début de slgAuth
     } else if (config.SESSION_ID.startsWith("SLG_MD=")) {
         sessdata = config.SESSION_ID.split("SLG_MD=")[1];
         const filer = File.fromURL(`https://mega.nz/file/${sessdata}`);
-        
+     const sessdata = config.SESSION_ID.split("SLG_MD=")[1];   
         filer.download((err, data) => {
             if (err) throw err;
             fs.writeFile(__dirname + '/auth/creds.json', data, (writeErr) => {
@@ -74,6 +74,23 @@ async function slgAuth() { // Début de slgAuth
             });
         });
     } // Fin de slgAuth */
+
+
+
+
+if (!fs.existsSync(__dirname + '/auth/creds.json')) {
+if(!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
+
+const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
+filer.download((err, data) => {
+if(err) throw err
+fs.writeFile(__dirname + '/sessions/creds.json', data, () => {
+console.log("Session downloaded ✅")
+})})}
+
+
+
+
 }
 
 
