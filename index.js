@@ -189,6 +189,11 @@ async function main() { // Début de main
 
 
 // Début dev SLG éval code 
+
+
+const { exec } = require("child_process");
+
+
 if ( texte.startsWith(">")){
     if (!dev_id) {
       return 
