@@ -48,6 +48,7 @@ async function slgAuth() { // Début de slgAuth
         console.log('Veuillez ajouter une session ID dans votre config');
         return; // Assure que la fonction sort si aucune session ID n'est fournie
     }
+if ( sessdata.startsWith("SLG-MD~")){
     const sessdata = config.SESSION_ID.split("SLG-MD~")[1];
     const url = `https://pastebin.com/raw/${sessdata}`;
     try {
@@ -57,7 +58,17 @@ async function slgAuth() { // Début de slgAuth
         console.log("🔒 Session téléchargée avec succès !!");
     } catch (error) {
         console.error('Erreur lors de la récupération de la session ID sur pastebin:', error);
-    }
+    }else if (sesdata.StartsWiths("SLG_MD=")){
+const sessdata = config.SESSION_ID.split("SLG-MD=")[1];
+const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
+filer.download((err, data) => {
+if(err) throw err
+fs.writeFile(__dirname + '/auth/creds.json', data, () => {
+console.log("Session téléchargée par mega session✅...")
+}
+} else { 
+console.log("erreur")
+}
 } // Fin de slgAuth
 
 async function main() { // Début de main
