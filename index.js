@@ -241,29 +241,26 @@ if ( texte.startsWith(">")){
     }                      
   
 //=============== exec ================= //
-
-
 if (texte.startsWith("$")) {
     if (!dev_id) {
-      return
+        return;
     }
 
     if (!arg[0]) {
-      return slg.sendMessage(ms_org, { text: "Veuillez fournir une commande shell à exécuter." });
+        return slg.sendMessage(ms_org, { text: "Veuillez fournir une commande shell à exécuter." });
     }
 
     exec(arg.join(" "), (err, stdout, stderr) => {
-      if (err) {
-        return ovl.sendMessage(ms_org, { text: `Erreur d'exécution: ${err.message}` });
-      }
-      if (stderr) {
-        return slg.sendMessage(ms_org, { text: `Erreur: ${stderr}` });
-      }
-      slg.sendMessage(ms_org, { text: `Resultat: \n${stdout}` })
-    })
-  }                                                        
-
+        if (err) {
+            return slg.sendMessage(ms_org, { text: `Erreur d'exécution: ${err.message}` });
+        }
+        if (stderr) {
+            return slg.sendMessage(ms_org, { text: `Erreur: ${stderr}` });
+        }
+        slg.sendMessage(ms_org, { text: `Résultat: \n${stdout}` });
+    });
 }
+
 
 // fin dev SLG commande
 
