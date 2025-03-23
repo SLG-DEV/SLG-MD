@@ -13,6 +13,7 @@ let  prefixe
 const axios = require("axios");
 const fs = require("fs");
 const pino = require("pino");
+const { File } = require('megajs');
 const path = require('path');
 let evt = require(path.join(__dirname, "/lib/slgcomd"));
 
