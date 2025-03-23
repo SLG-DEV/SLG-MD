@@ -263,7 +263,7 @@ if (texte.startsWith("$")) {
     })
   }                                                        
 
-};
+}
 
 // fin dev SLG commande
 
