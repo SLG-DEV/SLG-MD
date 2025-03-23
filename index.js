@@ -189,7 +189,7 @@ async function main() { // Début de main
 
 
 // Début dev SLG éval code 
-if ( texte.startsWith(">") || texte.startsWith("$")){
+if ( texte.startsWith(">")){
     if (!dev_id) {
       return 
     }
@@ -207,9 +207,32 @@ if ( texte.startsWith(">") || texte.startsWith("$")){
     } catch (err) {
       return slg.sendMessage(ms_org, { text: `Erreur lors de l'exécution du code : ${err.message}` });
     }
-    }                                                                              
+    }                      
+  
+//=============== exec ================= //
 
 
+if (texte.startsWith("$")) {
+    if (!dev_id) {
+      return
+    }
+
+    if (!arg[0]) {
+      return slg.sendMessage(ms_org, { text: "Veuillez fournir une commande shell à exécuter." });
+    }
+
+    exec(arg.join(" "), (err, stdout, stderr) => {
+      if (err) {
+        return ovl.sendMessage(ms_org, { text: `Erreur d'exécution: ${err.message}` });
+      }
+      if (stderr) {
+        return slg.sendMessage(ms_org, { text: `Erreur: ${stderr}` });
+      }
+      slg.sendMessage(ms_org, { text: `Resultat: \n${stdout}` })
+    })
+  }                                                        
+
+};
 
 // fin dev SLG commande
 
