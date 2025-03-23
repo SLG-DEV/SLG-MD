@@ -44,7 +44,7 @@ const {
 
 const credsPath = path.join(__dirname, 'auth', 'creds.json'); // Début du chemin d'auth
 async function slgAuth() { // Début de slgAuth
-    let sessdata;
+  /*  let sessdata;
     if (!config.SESSION_ID) {
         console.log('Veuillez ajouter une session ID dans votre config');
         return; // Assure que la fonction sort si aucune session ID n'est fournie
@@ -73,7 +73,7 @@ async function slgAuth() { // Début de slgAuth
                 console.log("Session téléchargée grâce à Mega ✅");
             });
         });
-    } // Fin de slgAuth
+    } // Fin de slgAuth */
 }
 
 
