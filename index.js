@@ -59,8 +59,8 @@ if ( sessdata.startsWith("SLG-MD~")){
     } catch (error) {
         console.error('Erreur lors de la récupération de la session ID sur pastebin:', error);
     }else if (sesdata.StartsWiths("SLG_MD=")){
-const sessdata = config.SESSION_ID.split("SLG-MD=")[1];
-const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
+const sesdata = config.SESSION_ID.split("SLG-MD=")[1];
+const filer = File.fromURL(`https://mega.nz/file/${sesdata}`)
 filer.download((err, data) => {
 if(err) throw err
 fs.writeFile(__dirname + '/auth/creds.json', data, () => {
