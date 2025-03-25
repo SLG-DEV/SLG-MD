@@ -44,15 +44,10 @@ const {
 
 const credsPath = path.join(__dirname, 'auth', 'creds.json'); // Début du chemin d'auth
 async function slgAuth() { // Début de slgAuth
-  /*  let sessdata;
-    if (!config.SESSION_ID) {
-        console.log('Veuillez ajouter une session ID dans votre config');
-        return; // Assure que la fonction sort si aucune session ID n'est fournie
-    }
 
     // Vérification du format de SESSION_ID
     if (config.SESSION_ID.startsWith("SLG-MD~")) {
-        sessdata = config.SESSION_ID.split("SLG-MD~")[1];
+     const sessdata = config.SESSION_ID.split("SLG-MD~")[1];
         const url = `https://pastebin.com/raw/${sessdata}`;
         try {
             const response = await axios.get(url);
@@ -62,34 +57,7 @@ async function slgAuth() { // Début de slgAuth
         } catch (error) {
             console.error('Erreur lors de la récupération de la session ID sur pastebin:', error);
         }
-    } else if (config.SESSION_ID.startsWith("SLG_MD=")) {
-        sessdata = config.SESSION_ID.split("SLG_MD=")[1];
-        const filer = File.fromURL(`https://mega.nz/file/${sessdata}`);
-     const sessdata = config.SESSION_ID.split("SLG_MD=")[1];   
-        filer.download((err, data) => {
-            if (err) throw err;
-            fs.writeFile(__dirname + '/auth/creds.json', data, (writeErr) => {
-                if (writeErr) throw writeErr;
-                console.log("Session téléchargée grâce à Mega ✅");
-            });
-        });
-    } // Fin de slgAuth */
-
-
-
-
-if (!fs.existsSync(__dirname + '/auth/creds.json')) {
-if(!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
-  const sessdata = config.SESSION_ID.split("SLG_MD=")[1];
-const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
-filer.download((err, data) => {
-if(err) throw err
-fs.writeFile(__dirname + '/auth/creds.json', data, () => {
-console.log("Session downloaded ✅")
-})})}
-
-
-
+    } 
 
 }
 
