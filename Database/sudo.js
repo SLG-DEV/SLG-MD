@@ -1,5 +1,17 @@
 
+const { pool } = require("pg");
+  const config = require("../config");
+  const db = config.Db
 
+
+const setDb = {
+  connectionString:db ,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+};
+
+  const pool = new pool(setDb)
 
 async function createSudoTable() {
   const client = await pool.connect();
