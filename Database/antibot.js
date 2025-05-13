@@ -39,7 +39,7 @@ antibotTable();
 
 
 
-async function atbAddOrUpdateJid(jid, etat) {
+async function atbAddOrUpdateJid(jid, statut) {
   const client = await pool.connect();
 
   try {
