@@ -47,7 +47,7 @@ const setDb = {
           await client.query('INSERT INTO presence (jid, type) VALUES ($1, $2)', [jid, type]);
       }catch(e){
           console.log(`erreur de lors des changements sur la table présence de jid ${jid} pour ${type}`)
-      }finally{
+      } finally {
           client.release()
       }
      }
@@ -75,7 +75,31 @@ const setDb = {
     client.release();
   }
 };
-module.exports = {
+
+async function presenceRecupActionJid(jid) {
+  const client = await pool.connect();
+
+  try {
+    // Recherchez le JID dans la table 'antilien' et récupérez son action
+    const result = await client.query('SELECT action FROM presence WHERE jid = $1', [jid]);
+
+    if (result.rows.length > 0) {
+      const action = result.rows[0].action;
+      return action;
+    } else {
+      // Si le JID n'existe pas dans la table, retournez une valeur par défaut (par exemple, 'supp')
+      return 'ecrit';
+    }
+  } catch (error) {
+    console.error('Erreur lors de la récupération de l\'action du JID dans la table :', error);
+    return 'ecrit'; // Gestion de l'erreur en retournant une valeur par défaut
+  } finally {
+    client.release();
+  }
+};
+
+module.exports {
+preseceRecupAction,
 addOrUpdatePresence,
-presenceUpdateAction    
+presenceUpdateActionJid
 }
