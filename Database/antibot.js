@@ -14,7 +14,7 @@ const setDb = {
   
 
 
-async function AntibotTable() {
+async function antibotTable() {
   const client = await pool.connect();
   try {
     // Exécutez une requête SQL pour créer la table "antibot" si elle n'existe pas déjà
@@ -35,7 +35,7 @@ async function AntibotTable() {
 
 // Appelez la méthode pour créer la table "antibot
 
-AntibotTable();
+antibotTable();
 
 
 
