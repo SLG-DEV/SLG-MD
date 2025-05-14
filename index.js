@@ -17,6 +17,7 @@ const path = require('path');
 let evt = require(path.join(__dirname, "/lib/slgcomd"));
 let pri = config.PREFIX;
 let prefixe = (pri == "null" || pri == "undefined" || pri == "") ? "" : config.PREFIX;
+const { preseceRecupAction } = require("./Database/présence")
 
 const { 
     default: makeWASocket, 
@@ -136,7 +137,7 @@ async function main() { // Début de main
         const prenium_id = premium_Users_id.includes(auteur_Message);
         const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
 
-        var choix = config.PRESENCE.toLowerCase();
+        var choix = preseceRecupAction(auteur_Message).toLowerCase();
 
         if (choix === "online") {
             await slg.sendPresenceUpdate("available", ms_org);
