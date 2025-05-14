@@ -12,14 +12,14 @@ const config = require("./config"); // Début de configurations
 const axios = require("axios");
 const fs = require("fs");
 const pino = require("pino");
-const { File } = require('megajs');
 const path = require('path');
 let evt = require(path.join(__dirname, "/lib/slgcomd"));
 let pri = config.PREFIX;
 let prefixe = (pri == "null" || pri == "undefined" || pri == "") ? "" : config.PREFIX;
 const { preseceRecupAction } = require("./Database/presence");
 const { verifstatutJid, recupActionJid } = require("./Database/antilien");
-const { atbVerifStatutJid, atbRecupActionJid } = require("./Database/antibot")
+const { atbVerifStatutJid, atbRecupActionJid } = require("./Database/antibot");
+const { getAllSudoNumbers } = require("./Database/sudo")
 
 const { 
     default: makeWASocket, 
