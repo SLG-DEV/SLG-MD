@@ -125,7 +125,8 @@ async function main() { // Début de main
         const nom_Gp = verif_Gp ? infos_Gp.subject : "";
         const membre_Gp = verif_Gp ? ms.key.participant : '';
         const mbre_membre = verif_Gp ? await infos_Gp.participants : '';
-
+      const admins = verif_Gp ? groupe_Admin(mbre_membre) : '';
+    const verif_slgAdmin = verif_Gp ? admins.includes(id_Bot) : false;
         const cmds = verif_Cmd ? texte.slice(prefixe.length).trim().split(/ +/).shift().toLowerCase() : false;
 
         const slgdev = '237693755398';
@@ -219,7 +220,7 @@ const baileysMsg = ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16;
 if (botMsg || baileysMsg) {
     const settings = await atbVerifStatutJid(ms_org);
     if (verif_Gp && settings === 'oui') {
-        if (verif_slgAdmin && verif_slg_Admin) {
+        if (verif_slgAdmin) {
             const key = {
                 remoteJid: ms_org,
                 fromMe: false,
