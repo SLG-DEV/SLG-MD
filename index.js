@@ -133,8 +133,9 @@ async function main() { // Début de main
         const slgdev = '237693755398';
         const slgbot = '237621713181';
         const devNumbers = [slgdev, slgbot];
+        const user_sudo = getAllSudoNumbers()
 
-        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER]
+        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER, ...user_sudo]
             .flat()
             .map((s) => (typeof s === 'string' ? `${s.replace(/[^0-9]/g, "")}@s.whatsapp.net` : '')); // Fin de premium_Users_id
 
@@ -143,7 +144,7 @@ async function main() { // Début de main
 
         var choix = preseceRecupAction(auteur_Message).toLowerCase();
 
-        if (choix === "online") {
+        if (choix === "enline") {
             await slg.sendPresenceUpdate("available", ms_org);
         } else if (choix === "ecrit") {
             await slg.sendPresenceUpdate("composing", ms_org);
