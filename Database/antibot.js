@@ -49,10 +49,10 @@ async function atbAddOrUpdateJid(jid, statut) {
 
     if (jidExiste) {
       // Si le jid existe, mettez à jour l'état avec la valeur passée en argument
-      await client.query('UPDATE antibot SET statut = $1 WHERE jid = $2', [etat, jid]);
+      await client.query('UPDATE antibot SET statut = $1 WHERE jid = $2', [statut, jid]);
     } else {
       // Si le jid n'existe pas, ajoutez-le avec l'état passé en argument et l'action 'supp' par défaut
-      await client.query('INSERT INTO antibot (jid, statut, action) VALUES ($1, $2, $3)', [jid, etat, 'supp']);
+      await client.query('INSERT INTO antibot (jid, statut, action) VALUES ($1, $2, $3)', [jid, statut, 'supp']);
     }
 
     console.log(`JID ${jid} ajouté ou mis à jour avec succès dans la table 'antibot'.`);
