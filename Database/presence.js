@@ -26,7 +26,7 @@ const setDb = {
       
       
   } catch(err){
-      console.log("erreur pour la table ANTILIEN", err)
+      console.log("erreur pour la table présence", err)
   } finally{
   client.release()
       
@@ -57,7 +57,7 @@ const setDb = {
 
   try {
     // Vérifiez si le jid existe déjà dans la table 'prencce'
-    const result = await client.query('SELECT * FROM antibot WHERE jid = $1', [jid]);
+    const result = await client.query('SELECT * FROM presence WHERE jid = $1', [jid]);
     const jidExiste = result.rows.length.exists;
 
     if (jidExiste) {
