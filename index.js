@@ -125,6 +125,7 @@ async function main() { // Début de main
         const nom_Gp = verif_Gp ? infos_Gp.subject : "";
         const membre_Gp = verif_Gp ? ms.key.participant : '';
         const mbre_membre = verif_Gp ? await infos_Gp.participants : '';
+        const groupe_Admin = (participants) => participants.filter((m) => m.admin).map((m) => m.id);
       const admins = verif_Gp ? groupe_Admin(mbre_membre) : '';
     const verif_slgAdmin = verif_Gp ? admins.includes(id_Bot) : false;
         const cmds = verif_Cmd ? texte.slice(prefixe.length).trim().split(/ +/).shift().toLowerCase() : false;
@@ -177,6 +178,9 @@ async function main() { // Début de main
             dev_id,
             prefixe,
             repondre,
+            groupe_Admin
+            verif_slgAdmin
+            admins
             verif_Cmd
         }; // Fin de com_options
 
