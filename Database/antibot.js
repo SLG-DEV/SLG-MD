@@ -97,15 +97,15 @@ async function atbVerifStatutJid(jid) {
     const result = await client.query('SELECT statut FROM antibot WHERE jid = $1', [jid]);
 
     if (result.rows.length > 0) {
-      const statut = result.rows[0].etat;
+      const statut = result.rows[0].statut;
       return statut  === 'oui';
     } else {
       // Si le JID n'existe pas dans la table, il n'est pas enregistré comme "oui"
-      return false;
+      return non;
     }
   } catch (error) {
     console.error('Erreur lors de la vérification de l\'état du JID dans la table ', error);
-    return false;
+    return non;
   } finally {
     client.release();
   }
