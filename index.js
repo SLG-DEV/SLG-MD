@@ -17,7 +17,9 @@ const path = require('path');
 let evt = require(path.join(__dirname, "/lib/slgcomd"));
 let pri = config.PREFIX;
 let prefixe = (pri == "null" || pri == "undefined" || pri == "") ? "" : config.PREFIX;
-const { preseceRecupAction } = require("./Database/presence")
+const { preseceRecupAction } = require("./Database/presence");
+const { verifstatutJid, recupActionJid } = require("./Database/antilien");
+const { atbVerifStatutJid, atbRecupActionJid } = require("./Database/antibot")
 
 const { 
     default: makeWASocket, 
@@ -163,6 +165,7 @@ async function main() { // Début de main
             msg_Repondu,
             auteur_Msg_Repondu,
             mr,
+            ms,
             auteur_Message,
             membre_Gp,
             arg,
@@ -179,6 +182,73 @@ async function main() { // Début de main
         if (ms.key && ms.key.remoteJid === 'status@broadcast' && config.STATUS === "oui") {
             slg.readMessages([ms.key]);
         } // Fin de lecture auto status
+
+
+// antilink
+if (texte.includes('https://') || texte.includes('http://')) {
+    const antil = await verifstatutJid(ms_org);
+    if (verif_Gp && verif_slgAdmin && antil === 'oui') {
+        const type = recupActionJid().toLowerCase();
+        const user = auteurMessage.split('@')[0];
+        
+        switch (type) {
+            case 'supp':
+                await slg.sendMessage(ms_org, {
+                    text: `@${user}, il est interdit d'envoyer des liens dans ce groupe.`,
+                    mentions: [auteur_Message]
+                }, { quoted: ms });
+                await slg.sendMessage(ms_org, { delete: ms.key });
+                break;
+
+            case 'kick':
+                await slg.sendMessage(ms_org, {
+                    text: `@${user} a été retiré pour avoir envoyé un lien dans ce groupe.`,
+                    mentions: [auteur_Message]
+                }, { quoted: ms });
+                await slg.sendMessage(ms_org, { delete: ms.key });
+                await slg.groupParticipantsUpdate(ms_org, [auteur_Message], "remove");
+                break;
+        }
+    }
+} // fin antilink
+
+// antibot début
+const botMsg = ms.key?.id?.startsWith('BAES') && ms.key?.id?.length === 16;
+const baileysMsg = ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16;
+
+if (botMsg || baileysMsg) {
+    const settings = await atbVerifStatutJid(ms_org);
+    if (verif_Gp && settings === 'oui') {
+        if (verif_slgAdmin && verif_slg_Admin) {
+            const key = {
+                remoteJid: ms_org,
+                fromMe: false,
+                id: ms.key.id,
+                participant: auteur_Message
+            };
+            const action = await atbRecupActionJid(ms_org);
+
+            switch (action) {
+                case 'supp':
+                    await slg.sendMessage(ms_org, {
+                        text: `*_@${auteur_Message.split("@")[0]}, les bots ne sont pas autorisés ici._*`,
+                        mentions: [auteur_Message]
+                    });
+                    await slg.sendMessage(ms_org, { delete: ms.key });
+                    break;
+
+                case 'kick':
+                    await slg.sendMessage(ms_org, {
+                        text: `@${auteur_Message.split("@")[0]} a été retiré pour avoir utilisé un bot.`,
+                        mentions: [auteur_Message]
+                    });
+                    await slg.sendMessage(ms_org, { delete: ms.key });
+                    await slg.groupParticipantsUpdate(ms_org, [auteur_Message], "remove");
+                    break;
+            }
+        }
+    }
+} // fin antibot
 
 
 // Début dev SLG éval code 
