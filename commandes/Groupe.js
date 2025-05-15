@@ -22,7 +22,7 @@ verifstatutJid } = require("../Database/antilien");
      return repondre("*_commande réservée pour les groupes._*");
    }
 if (!prenium_id){
-return répondre("*_vous n'avez pas le droit d'utiliser cette commande_*"};
+return repondre("*_vous n'avez pas le droit d'utiliser cette commande_*"};
 
    if (!verif_slgAdmin) {
      return repondre("*_veillez nommer le bot administrateur_*");
