@@ -76,7 +76,7 @@ const setDb = {
   }
 };
 
-async function presenceRecupActionJid(jid) {
+async function preseceRecupActionJid(jid) {
   const client = await pool.connect();
 
   try {
