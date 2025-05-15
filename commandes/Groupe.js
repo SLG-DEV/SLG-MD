@@ -32,7 +32,7 @@ verifstatutJid } = require("../Database/antilien");
    const etattrue = await verifstatutJid(ms_org);
 
    if (!arg || arg === "") {
-     return repondre(`*_voici l'utilisation de l'antilien '${prefixe} oui pour activer avec une action supp par defaut ${prefixe}antilien oui/kick pour actualiser sur retirer et antilien oui/supp pour actualiser sur supprimer Antilien non pour desactiver_*`);
+     return repondre(`*_voici l'utilisation de l'antilien ${prefixe}antilien oui pour activer avec une action supp par defaut ${prefixe}antilien oui/kick pour actualiser sur retirer et antilien oui/supp pour actualiser sur supprimer Antilien non pour desactiver_*`);
    } 
 
    if (!verifWrite) {
@@ -50,7 +50,7 @@ verifstatutJid } = require("../Database/antilien");
      await updateActionInJid(ms_org, "supp");
      return repondre("*_antilien actualisé sur supp avec succès_*");
    } else {
-     return repondre(`*_voici l'utilisation de l'antilien '${prefixe} oui pour activer avec une action supp par defaut ${prefixe}antilien oui/kick pour actualiser sur retirer et antilien oui/supp pour actualiser sur supprimer Antilien non pour desactiver_*`);
+     return repondre(`*_voici l'utilisation de l'antilien ${prefixe}antilien  oui pour activer avec une action supp par defaut ${prefixe}antilien oui/kick pour actualiser sur retirer et antilien oui/supp pour actualiser sur supprimer Antilien non pour desactiver_*`);
    }
  } catch (e) {
    repondre(e);
