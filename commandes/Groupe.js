@@ -21,6 +21,8 @@ verifstatutJid } = require("../Database/antilien");
    if (!verif_Gp) {
      return repondre("*_commande réservée pour les groupes._*");
    }
+if (!prenium_id){
+return répondre("*_vous n'avez pas le droit d'utiliser cette commande_*"};
 
    if (!verif_slgAdmin) {
      return repondre("*_veillez nommer le bot administrateur_*");
@@ -50,7 +52,7 @@ verifstatutJid } = require("../Database/antilien");
      await updateActionInJid(ms_org, "supp");
      return repondre("*_antilien actualisé sur supp avec succès_*");
    } else {
-     return repondre(`*_voici l'utilisation de l'antilien ${prefixe}antilien  oui pour activer avec une action supp par defaut ${prefixe}antilien oui/kick pour actualiser sur retirer et antilien oui/supp pour actualiser sur supprimer Antilien non pour desactiver_*`);
+     return repondre(`*_voici l'utilisation de l'antilien ${prefixe}antilien  oui pour activer avec une action supp par defaut ${prefixe}antilien oui/kick pour actualiser sur retirer et antilien oui/supp pour actualiser sur supprimer Antilien non pour desactiver_*\n*_Options disponibles:\n${shouldWrite}*`);
    }
  } catch (e) {
    repondre(e);
@@ -71,6 +73,9 @@ slgcomd({
    if (!verif_Gp) {
      return repondre("*_commande réservée pour les groupes._*");
    }
+
+if(!prenium_id){
+return répondre("*_vous n'avez pas le droit d'utiliser cette commande_*"};
 
    if (!verif_slgAdmin) {
      return repondre("*_veillez nommer le bot administrateur_*");
@@ -100,7 +105,7 @@ slgcomd({
      await  atbUpdateAction(ms_org, "supp");
      return repondre("*_antibot actualisé sur supp avec succès_*");
    } else {
-     return repondre(`*_voici l'utilisation de l'antibot ${prefixe}antibot oui pour activer avec une action supp par defaut ${prefixe}antibot oui/kick pour actualiser sur retirer et antibot oui/supp pour actualiser sur supprimer Antibot non pour desactiver_*`);
+     return repondre(`*_voici l'utilisation de l'antibot: ${prefixe}antibot oui pour activer avec une action supp par defaut ${prefixe}antibot oui/kick pour actualiser sur retirer et antibot oui/supp pour actualiser sur supprimer Antibot non pour desactiver_*\n*_Options disponibles:\n${shouldWrite}*`);
    }
  } catch (e) {
    repondre(e);
