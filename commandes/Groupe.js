@@ -79,7 +79,7 @@ slgcomd({
    const shouldWrite = ["oui/kick","oui/supp", "non","oui"];
    const verifWrite = shouldWrite.includes(arg);
 
-   const etattrue = await atb VerifstatutJid(ms_org);
+   const etattrue = await atbVerifstatutJid(ms_org);
 
    if (!arg || arg === "") {
      return repondre(`*_voici l'utilisation de l'antibot ${prefixe}antibit oui pour activer avec une action supp par defaut ${prefixe}antibot oui/kick pour actualiser sur retirer et antilien oui/supp pour actualiser sur supprimer Antibot non pour desactiver_*`);
