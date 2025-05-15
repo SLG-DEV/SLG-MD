@@ -26,7 +26,7 @@ verifstatutJid } = require("../Database/antilien");
      return repondre("*_veillez nommer le bot administrateur_*");
    }
 
-   const shouldWrite = ["oui/kick", "kick", "oui/supp", "non","oui"];
+   const shouldWrite = ["oui/kick","oui/supp", "non","oui"];
    const verifWrite = shouldWrite.includes(arg);
 
    const etattrue = await verifstatutJid(ms_org);
