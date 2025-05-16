@@ -23,7 +23,7 @@ async function antibotTable() {
         jid text PRIMARY KEY,
         statut text,
         action text
-      );
+      )
     `);
     console.log("La table 'antibot' a été créée avec succès.");
   } catch (error) {
