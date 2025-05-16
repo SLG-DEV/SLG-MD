@@ -26,7 +26,7 @@ async function presence() {
   } catch (err) {
     console.log("Erreur lors de la création de la table présence", err);
   } finally {
-    if (client) client.release();
+   client.release();
   }
 }
 
