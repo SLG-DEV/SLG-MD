@@ -20,7 +20,7 @@ async function createSudoTable() {
       CREATE TABLE IF NOT EXISTS sudo (
         id serial PRIMARY KEY,
         jid text NOT NULL
-      );
+      )
     `);
     console.log("La table 'sudo' a été créée avec succès.");
   } catch (error) {
