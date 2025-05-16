@@ -20,7 +20,7 @@ async function presence() {
         jid TEXT PRIMARY KEY,
         statut TEXT DEFAULT 'non',
         type INT DEFAULT 0
-      );
+      )
     `);
     console.log(`Table presence créée avec succès`);
   } catch (err) {
