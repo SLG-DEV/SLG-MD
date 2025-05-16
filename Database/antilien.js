@@ -11,7 +11,7 @@ const setDb = {
   },
 };
 
-  const pool = new pool(setDb);
+  const pool = new Pool(setDb);
   
   async function tableAntilien(){
     try{
