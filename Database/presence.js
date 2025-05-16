@@ -1,105 +1,98 @@
 const { Pool } = require("pg");
-  const config = require("../config");
-  const db = config.Db
-  
- 
+const config = require("../config");
+const db = config.Db;
+
 const setDb = {
-  connectionString:db ,
+  connectionString: db,
   ssl: {
     rejectUnauthorized: false,
   },
 };
 
-  const pool = new Pool(setDb);
-  
-  async function presence(){
-    try{
-      const client = await pool.connect()
-      await client.query(`
-          CREATE TABLE IF NOT EXISTS  presence(
-          jid TEXT PRIMARY KEY;
-          statut INT DEFAULT TEXT;
-          type INT DEFAULT TEXT 
-          console.log(`slg presence table créé avec succès`)
-      )`;
-      )
-      
-      
-  } catch(err){
-      console.log("erreur pour la table présence", err)
-  } finally{
-  client.release()
-      
-  }
-  
-  }
-  
-  presence()
- 
-  async function addOrUpdatePresence(jid, type) {
-    const client = await pool.connect();
-  try { 
-  const result = await client.query('SELECT * FROM presence WHERE jid = $1', [jid]);
-    const jidExiste = result.rows.exists;
-      if (jidExist) {
-          await client.query('UPDATE presence SET type = $1 WHERE jid = $2', [type, jid]);  
-      }else{
-          await client.query('INSERT INTO presence (jid, type) VALUES ($1, $2)', [jid, type]);
-      }catch(e){
-          console.log(`erreur de lors des changements sur la table présence de jid ${jid} pour ${type}`)
-      } finally {
-          client.release()
-      }
-     }
-     
- async function presenceUpdateAction(jid, action) {
-  const client = await pool.connect();
+const pool = new Pool(setDb);
 
+async function presence() {
+  let client;
   try {
-    // Vérifiez si le jid existe déjà dans la table 'prencce'
+    client = await pool.connect();
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS presence (
+        jid TEXT PRIMARY KEY,
+        statut TEXT DEFAULT 'non',
+        type INT DEFAULT 0
+      );
+    `);
+    console.log(`Table presence créée avec succès`);
+  } catch (err) {
+    console.log("Erreur lors de la création de la table présence", err);
+  } finally {
+    if (client) client.release();
+  }
+}
+
+presence();
+
+async function addOrUpdatePresence(jid, type) {
+  let client;
+  try {
+    client = await pool.connect();
     const result = await client.query('SELECT * FROM presence WHERE jid = $1', [jid]);
-    const jidExiste = result.rows.length.exists;
+    const jidExiste = result.rows.length > 0;
 
     if (jidExiste) {
-      // Si le jid existe, mettez à jour l'action avec la valeur fournie (et laissez l'état inchangé)
+      await client.query('UPDATE presence SET type = $1 WHERE jid = $2', [type, jid]);
+    } else {
+      await client.query('INSERT INTO presence (jid, type) VALUES ($1, $2)', [jid, type]);
+    }
+  } catch (e) {
+    console.log(`Erreur lors des changements sur la table présence pour jid ${jid} et type ${type}:`, e);
+  } finally {
+    if (client) client.release();
+  }
+}
+
+async function presenceUpdateAction(jid, action) {
+  let client;
+  try {
+    client = await pool.connect();
+    const result = await client.query('SELECT * FROM presence WHERE jid = $1', [jid]);
+    const jidExiste = result.rows.length > 0;
+
+    if (jidExiste) {
       await client.query('UPDATE presence SET action = $1 WHERE jid = $2', [action, jid]);
     } else {
-      // Si le jid n'existe pas, ajoutez-le avec l'état 'non' par défaut et l'action fournie
       await client.query('INSERT INTO presence (jid, statut, action) VALUES ($1, $2, $3)', [jid, 'non', action]);
     }
 
     console.log(`Action mise à jour avec succès pour le JID ${jid} dans la table 'presence'.`);
   } catch (error) {
-    console.error('Erreur lors de la mise à jour de l\'action pour le JID dans la table  :', error);
+    console.error('Erreur lors de la mise à jour de l\'action pour le JID dans la table :', error);
   } finally {
-    client.release();
+    if (client) client.release();
   }
-};
+}
 
 async function preseceRecupActionJid(jid) {
-  const client = await pool.connect();
-
+  let client;
   try {
-    // Recherchez le JID dans la table 'antilien' et récupérez son action
+    client = await pool.connect();
     const result = await client.query('SELECT action FROM presence WHERE jid = $1', [jid]);
 
     if (result.rows.length > 0) {
-      const action = result.rows[0].action;
-      return action;
+      return result.rows[0].action;
     } else {
-      // Si le JID n'existe pas dans la table, retournez une valeur par défaut (par exemple, 'supp')
-      return 'ecrit';
+      return 'ecrit'; // Valeur par défaut si le JID n'existe pas
     }
   } catch (error) {
     console.error('Erreur lors de la récupération de l\'action du JID dans la table :', error);
     return 'ecrit'; // Gestion de l'erreur en retournant une valeur par défaut
   } finally {
-    client.release();
+    if (client) client.release();
   }
-};
-
-module.exports {
-preseceRecupAction,
-addOrUpdatePresence,
-presenceUpdateActionJid
 }
+
+module.exports = {
+  preseceRecupActionJid,
+  addOrUpdatePresence,
+  presenceUpdateAction,
+};
