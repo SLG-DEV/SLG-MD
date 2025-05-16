@@ -179,9 +179,9 @@ async function main() { // Début de main
             dev_id,
             prefixe,
             repondre,
-            groupe_Admin
-            verif_slgAdmin
-            admins
+            groupe_Admin,
+            verif_slgAdmin,
+            admins,
             verif_Cmd
         }; // Fin de com_options
 
