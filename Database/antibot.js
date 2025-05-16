@@ -133,10 +133,10 @@ async function atbRecupActionJid(jid) {
   }
 };
 
-module.export {
+module.export = {
     atbAddOrUpdateJid;
     atbUpdateAction;
     atbVerifStatutJid;
     atbRecupActionJid
     
-}
+};
