@@ -10,7 +10,7 @@ const setDb = {
   },
 };
 
-  const pool = new pool(setDb)
+  const pool = new pool(setDb);
   
   async function presence(){
     try{
