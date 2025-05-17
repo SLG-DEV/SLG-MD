@@ -7,5 +7,5 @@ STATUS: process.env.LECTURE_AUTO_STATUS || "oui",
  PREFIX: process.env.PREFIX || "null",
    MODE: process.env.MODE || "prive",
 ZONE_DE_TEMPS: process.env.ZONE_DE_TEMPS || "Africa/Lagos",
-   Db: process.env.Db || "postgresql://flashmd_user:JlUe2Vs0UuBGh0sXz7rxONTeXSOra9XP@dpg-cqbd04tumphs73d2706g-a/flashmd",
+   Db: process.env.Db || "postgresql://postgres.qnjvgxwyncnsbpfxwrbq:ovlmdmdpasse@aws-0-eu-central-1.pooler.supabase.com:6543/postgres",
 };
