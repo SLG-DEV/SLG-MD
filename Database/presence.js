@@ -47,7 +47,7 @@ async function addOrUpdatePresence(jid, type) {
   } catch (e) {
     console.log(`Erreur lors des changements sur la table présence pour jid ${jid} et type ${type}:`, e);
   } finally {
-    if (client) client.release();
+    client.release();
   }
 }
 
@@ -68,7 +68,7 @@ async function presenceUpdateAction(jid, action) {
   } catch (error) {
     console.error('Erreur lors de la mise à jour de l\'action pour le JID dans la table :', error);
   } finally {
-    if (client) client.release();
+     client.release();
   }
 }
 
@@ -87,7 +87,7 @@ async function preseceRecupActionJid(jid) {
     console.error('Erreur lors de la récupération de l\'action du JID dans la table :', error);
     return 'ecrit'; // Gestion de l'erreur en retournant une valeur par défaut
   } finally {
-    if (client) client.release();
+   client.release();
   }
 }
 
