@@ -94,5 +94,5 @@ async function preseceRecupActionJid(jid) {
 module.exports = {
   preseceRecupActionJid,
   addOrUpdatePresence,
-  presenceUpdateAction,
+  presenceUpdateAction
 };
