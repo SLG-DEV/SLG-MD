@@ -72,7 +72,7 @@ async function presenceUpdateAction(jid, action) {
   }
 }
 
-async function preseceRecupActionJid(jid) {
+async function pRecupActionJid(jid) {
   let client;
   try {
     client = await pool.connect();
@@ -92,7 +92,7 @@ async function preseceRecupActionJid(jid) {
 }
 
 module.exports = {
-  preseceRecupActionJid,
+  pRecupActionJid,
   addOrUpdatePresence,
   presenceUpdateAction
 };
