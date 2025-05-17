@@ -142,7 +142,7 @@ async function main() { // Début de main
         const prenium_id = premium_Users_id.includes(auteur_Message);
         const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
 
-        var choix = preseceRecupAction(auteur_Message).toLowerCase();
+        var choix = pRecupAction(auteur_Message).toLowerCase();
 
         if (choix === "enline") {
             await slg.sendPresenceUpdate("available", ms_org);
