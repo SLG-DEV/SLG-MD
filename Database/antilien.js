@@ -111,5 +111,5 @@ module.exports = {
   addOrUpdateJid,
   updateActionInJid,
   verifstatutJid,
-  recupActionJid,
+  recupActionJid
 };
