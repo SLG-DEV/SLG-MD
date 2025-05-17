@@ -7,5 +7,5 @@ STATUS: process.env.LECTURE_AUTO_STATUS || "oui",
  PREFIX: process.env.PREFIX || "null",
    MODE: process.env.MODE || "prive",
 ZONE_DE_TEMPS: process.env.ZONE_DE_TEMPS || "Africa/Lagos",
-   Db: process.env.Db || "postgres://db_7xp9_user:6hwmTN7rGPNsjlBEHyX49CXwrG7cDeYi@dpg-cj7ldu5jeehc73b2p7g0-a.oregon-postgres.render.com/db_7xp9",
+   Db: process.env.Db || "postgresql://flashmd_user:JlUe2Vs0UuBGh0sXz7rxONTeXSOra9XP@dpg-cqbd04tumphs73d2706g-a/flashmd",
 };
