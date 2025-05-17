@@ -18,8 +18,8 @@ async function presence() {
     await client.query(`
       CREATE TABLE IF NOT EXISTS presence (
         jid TEXT PRIMARY KEY,
-        statut TEXT DEFAULT 'non',
-        type INT DEFAULT 0
+        statut TEXT ,
+        type TEXT
       )
     `);
     console.log(`Table presence créée avec succès`);
