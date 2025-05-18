@@ -32,7 +32,7 @@ async function presence() {
 
 presence();
 
-async function addOrUpdatePresence(jid, type) {
+async function pAddOrUpdateJid(jid, type) {
   let client;
   try {
     client = await pool.connect();
@@ -51,7 +51,7 @@ async function addOrUpdatePresence(jid, type) {
   }
 }
 
-async function presenceUpdateAction(jid, action) {
+async function pUpdateActionJid(jid, action) {
   let client;
   try {
     client = await pool.connect();
@@ -93,6 +93,6 @@ async function pRecupActionJid(jid) {
 
 module.exports = {
   pRecupActionJid,
-  addOrUpdatePresence,
-  presenceUpdateAction
+  pAddOrUpdateJid,
+  pUpdateActionJid
 };
