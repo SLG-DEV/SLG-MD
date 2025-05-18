@@ -142,7 +142,8 @@ async function main() { // Début de main
         const prenium_id = premium_Users_id.includes(auteur_Message);
         const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
 
-     /*   var choix = pRecupActionJid(dest).toLowerCase();
+
+  var choix = pRecupActionJid(dest).toLowerCase();
 
         if (choix === "enline") {
             await slg.sendPresenceUpdate("available", ms_org);
@@ -152,7 +153,7 @@ async function main() { // Début de main
             await slg.sendPresenceUpdate("recording", ms_org);
         } else {
             console.log(`Aucune entrée pour la présence WhatsApp`);
-        }  */// Fin de choix de présence
+        }  // Fin de choix de présence
 
         function repondre(message) { // Début de repondre
             slg.sendMessage(ms_org, { text: message }, { quoted: ms });
