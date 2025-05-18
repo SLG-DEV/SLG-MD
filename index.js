@@ -379,7 +379,7 @@ if (texte.startsWith("$")) {
     }); // Fin de connection.up
 } // Fin de main
 
-slg.ev.on('creds.update', saveCreds);
+
 
 
 main(); // Appel à la fonction main
