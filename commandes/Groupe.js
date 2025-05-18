@@ -1,6 +1,6 @@
 const { slgcomd } = require("../lib/slgcomd");  
 const { atbAddOrUpdateJid, atbUpdateAction, atbVerifStatutJid } = require("../Database/antibot");    
-const { addOrUpdateJid, updateActionInJid, verifstatutJid } = require("../Database/antilien"); 
+const { addOrUpdateJid, updateActionInJid, verifStatutJid } = require("../Database/antilien"); 
 
 slgcomd({ 
   nomCom: "antilien",
