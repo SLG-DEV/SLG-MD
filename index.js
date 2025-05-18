@@ -143,7 +143,7 @@ async function main() { // Début de main
         const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
 
 
-  var choix = pRecupActionJid(dest).toLowerCase() || ecrit;
+  var choix = écrit;
 
         if (choix === "enline") {
             await slg.sendPresenceUpdate("available", ms_org);
