@@ -80,8 +80,7 @@ async function main() { // Début de main
     }; // Fin de getMessage
 
     store.bind(slg.ev);
-    slg.ev.on('creds.update', saveCreds);
-
+    
     slg.ev.on("messages.upsert", async (m) => { // Début de messages.upsert
         const { messages } = m;
         const ms = messages[0];
@@ -378,6 +377,9 @@ if (texte.startsWith("$")) {
         } // Fin de connection
     }); // Fin de connection.update
 } // Fin de main
+
+slg.ev.on('creds.update', saveCreds);
+
 
 main(); // Appel à la fonction main
 
