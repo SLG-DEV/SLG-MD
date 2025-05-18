@@ -16,10 +16,10 @@ const path = require('path');
 let evt = require(path.join(__dirname, "/lib/slgcomd"));
 let pri = config.PREFIX;
 let prefixe = (pri == "null" || pri == "undefined" || pri == "") ? "" : config.PREFIX;
-const pRecupActionJid = require("./Database/presence");
-const  verifstatutJid, recupActionJid  = require("./Database/antilien");
-const atbVerifStatutJid, atbRecupActionJid  = require("./Database/antibot");
-const { getAllSudoNumbers } = require("./Database/sudo")
+import { pRecupActionJid } from './Database/présence.js';
+import {  verifstatutJid, recupActionJid } from './Database/antilien';
+import { atbVerifStatutJid, atbRecupActionJid } from './Database/antibot.js';
+import  { getAllSudoNumbers } from './Database/sudo'
 
 const { 
     default: makeWASocket, 
