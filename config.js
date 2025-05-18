@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 module.exports = {
-  SESSION_ID: process.env.SESSION_ID || "SLG-MD~uNqU11HT",
+  SESSION_ID: process.env.SESSION_ID || "SLG-MD~kULbnUJG",
 OWNER: process.env.NUMERO_OWNER || "237620066719", 
 STATUS: process.env.LECTURE_AUTO_STATUS || "oui", 
  PREFIX: process.env.PREFIX || "null",
