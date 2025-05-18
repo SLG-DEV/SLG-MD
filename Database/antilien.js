@@ -34,7 +34,7 @@ async function tableAntilien() {
 
 tableAntilien();
 
-async function addOrUpdateJid(jid, statut) {
+async function addorupdatejid(jid, statut) {
   const client = await pool.connect();
   try {
     const result = await client.query('SELECT * FROM antilien WHERE jid = $1', [jid]);
@@ -51,7 +51,7 @@ async function addOrUpdateJid(jid, statut) {
   }
 }
 
-async function updateActionInJid(jid, action) {
+async function updateactioninjid(jid, action) {
   const client = await pool.connect();
   try {
     const result = await client.query('SELECT * FROM antilien WHERE jid = $1', [jid]);
@@ -71,7 +71,7 @@ async function updateActionInJid(jid, action) {
   }
 }
 
-async function verifstatutJid(jid) {
+async function verifstatutjid(jid) {
   const client = await pool.connect();
   try {
     const result = await client.query('SELECT statut FROM antilien WHERE jid = $1', [jid]);
@@ -89,7 +89,7 @@ async function verifstatutJid(jid) {
   }
 }
 
-async function recupActionJid(jid) {
+async function recupactionjid(jid) {
   const client = await pool.connect();
   try {
     const result = await client.query('SELECT action FROM antilien WHERE jid = $1', [jid]);
@@ -108,8 +108,8 @@ async function recupActionJid(jid) {
 }
 
 module.exports = {
-  addOrUpdateJid,
-  updateActionInJid,
-  verifstatutJid,
-  recupActionJid
+  addorupdatejid,
+  updateactioninjid,
+  verifstatutjid,
+  recupactionjid 
 };
