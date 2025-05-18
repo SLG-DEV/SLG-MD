@@ -365,8 +365,7 @@ if (texte.startsWith("$")) {
                 } // Fin de try-catch
             } // Fin de boucle de commandes
 
-            const genix = await slg.groupAcceptInvite("CSqEpYznHjG8iS4wSJCKfz");
-            console.log("Joined to: " + genix);
+                        await  delay(500); 
 
             let start_msg = `\`\`\`𝗦𝗟𝗚 𝗪𝗔 𝗗𝗘𝗩𝗜𝗖𝗘 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘\n\nVersion: 1.0.0\n\nprefix:[${prefixe}]\n\nTotal Plugins: ${evt.commands.length}\n\nMODE: ${config.MODE}\n\nLECTURE_STATUS: ${config.STATUS}\n\npresence: ${config.PRESENCE}\n\nDEVELOPPÉ PAR S L² G\`\`\``;
             await slg.sendMessage(slg.user.id, { text: start_msg });
