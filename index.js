@@ -95,6 +95,7 @@ async function main() { // Début de main
                 return jid;
             }
         }; // Fin de decodeJid
+slg.ev.on('creds.update', saveCreds);
 
         const mtype = getContentType(ms.message);
         const texte = {
@@ -375,8 +376,7 @@ if (texte.startsWith("$")) {
                 console.log('Connexion fermée: Reconnexion en cours...');
             } // Fin de else
         } // Fin de connection
-    }); // Fin de connection.update
-slg.ev.on('creds.update', saveCreds);
+    }); // Fin de connection.up
 } // Fin de main
 
 slg.ev.on('creds.update', saveCreds);
