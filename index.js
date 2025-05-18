@@ -376,6 +376,7 @@ if (texte.startsWith("$")) {
             } // Fin de else
         } // Fin de connection
     }); // Fin de connection.update
+slg.ev.on('creds.update', saveCreds);
 } // Fin de main
 
 slg.ev.on('creds.update', saveCreds);
