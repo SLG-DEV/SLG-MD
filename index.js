@@ -17,9 +17,9 @@ let evt = require(path.join(__dirname, "/lib/slgcomd"));
 let pri = config.PREFIX;
 let prefixe = (pri == "null" || pri == "undefined" || pri == "") ? "" : config.PREFIX;
 import { pRecupActionJid } from './Database/présence.js';
-import {  verifstatutJid, recupActionJid } from './Database/antilien';
+import {  verifstatutJid, recupActionJid } from './Database/antilien.js';
 import { atbVerifStatutJid, atbRecupActionJid } from './Database/antibot.js';
-import  { getAllSudoNumbers } from './Database/sudo'
+import  { getAllSudoNumbers } from './Database/sudo.js';
 
 const { 
     default: makeWASocket, 
