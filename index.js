@@ -16,7 +16,7 @@ const path = require('path');
 let evt = require(path.join(__dirname, "/lib/slgcomd"));
 let pri = config.PREFIX;
 let prefixe = (pri == "null" || pri == "undefined" || pri == "") ? "" : config.PREFIX;
-// const { pRecupActionJid } = require("./Database/presence");
+const { pRecupActionJid } = require("./Database/presence");
 const { verifstatutJid, recupActionJid } = require("./Database/antilien");
 const { atbVerifStatutJid, atbRecupActionJid } = require("./Database/antibot");
 const { getAllSudoNumbers } = require("./Database/sudo")
@@ -142,7 +142,7 @@ async function main() { // Début de main
         const prenium_id = premium_Users_id.includes(auteur_Message);
         const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
 
-     /*   var choix = pRecupActionJid(auteur_Message).toLowerCase();
+     /*   var choix = pRecupActionJid(dest).toLowerCase();
 
         if (choix === "enline") {
             await slg.sendPresenceUpdate("available", ms_org);
