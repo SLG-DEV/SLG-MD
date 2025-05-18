@@ -39,7 +39,7 @@ antibotTable();
 
 
 
-async function atbAddOrUpdateJid(jid, statut) {
+async function atbaddorupdatejid(jid, statut) {
   const client = await pool.connect();
 
   try {
@@ -64,7 +64,7 @@ async function atbAddOrUpdateJid(jid, statut) {
 };
 
 
-async function atbUpdateAction(jid, action) {
+async function atbupdateaction(jid, action) {
   const client = await pool.connect();
 
   try {
@@ -90,7 +90,7 @@ async function atbUpdateAction(jid, action) {
 
 
 
-async function atbVerifStatutJid(jid) {
+async function atbverifstatutjid(jid) {
   const client = await pool.connect();
 
   try {
@@ -111,7 +111,7 @@ async function atbVerifStatutJid(jid) {
   }
 };
 
-async function atbRecupActionJid(jid) {
+async function atbrecupactionjid(jid) {
   const client = await pool.connect();
 
   try {
@@ -134,9 +134,9 @@ async function atbRecupActionJid(jid) {
 };
 
 module.export = {
-    atbAddOrUpdateJid,
-    atbUpdateAction,
-    atbVerifStatutJid,
-    atbRecupActionJid
+    atbaddorupdatejid,
+    atbupdateaction,
+    atbverifstatutjid,
+    atbrecupactionjid 
     
 };
