@@ -17,7 +17,7 @@ let evt = require(path.join(__dirname, "/lib/slgcomd"));
 let pri = config.PREFIX;
 let prefixe = (pri == "null" || pri == "undefined" || pri == "") ? "" : config.PREFIX;
 const pRecupActionJid = require('./Database/presence.js');
-const {  verifstatutJid, recupActionJid } = require('./Database/antilien.js');
+const {  verifStatutJid, recupActionJid } = require('./Database/antilien.js');
 const { atbVerifStatutJid, atbRecupActionJid } = require('./Database/antibot.js');
 const getAllSudoNumbers = require('./Database/sudo.js');
 
@@ -193,7 +193,7 @@ async function main() { // Début de main
 
 // antilink
 if (texte.includes('https://') || texte.includes('http://')) {
-    const antil = await verifstatutJid(ms_org);
+    const antil = await verifStatutJid(ms_org);
     if (verif_Gp && verif_slgAdmin && antil === 'oui') {
         const type = recupActionJid().toLowerCase();
         const user = auteurMessage.split('@')[0];
