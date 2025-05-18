@@ -17,7 +17,7 @@ let evt = require(path.join(__dirname, "/lib/slgcomd"));
 let pri = config.PREFIX;
 let prefixe = (pri == "null" || pri == "undefined" || pri == "") ? "" : config.PREFIX;
 const pRecupActionJid = require("./Database/presence");
-constbverifstatutJid, recupActionJid  = require("./Database/antilien");
+const  verifstatutJid, recupActionJid  = require("./Database/antilien");
 const atbVerifStatutJid, atbRecupActionJid  = require("./Database/antibot");
 const { getAllSudoNumbers } = require("./Database/sudo")
 
