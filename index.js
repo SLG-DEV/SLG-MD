@@ -143,7 +143,7 @@ slg.ev.on('creds.update', saveCreds);
         const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
 
 
-  var choix = "ecrit";
+  let choix = pRecupActionJid(dest);
 
         if (choix === "enline") {
             await slg.sendPresenceUpdate("available", ms_org);
