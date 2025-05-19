@@ -19,7 +19,7 @@ let prefixe = (pri == "null" || pri == "undefined" || pri == "") ? "" : config.P
 const pRecupActionJid = require('./Database/presence.js');
 const {  verifStatutJid, recupActionJid } = require('./Database/antilien.js');
 const { atbVerifStatutJid, atbRecupActionJid } = require('./Database/antibot.js');
-const getAllSudoNumbers = require('./Database/sudo.js');
+const { getAllSudoNumbers, issudo } = require('./Database/sudo.js');
 
 const { 
     default: makeWASocket, 
