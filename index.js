@@ -72,8 +72,6 @@ async function main() { // Début de main
         }
     }); // Fin de makeWASocket
 
-    store.bind(slg.ev);
-    
     slg.ev.on("messages.upsert", async (m) => { // Début de messages.upsert
         const { messages } = m;
         const ms = messages[0];
