@@ -30,7 +30,6 @@ const {
     jidDecode, 
     getContentType, 
     downloadContentFromMessage, 
-    makeInMemoryStore, 
     fetchLatestBaileysVersion, 
     DisconnectReason 
 } = require("@whiskeysockets/baileys"); // Fin de configuration
@@ -58,7 +57,6 @@ async function slgAuth() { // Début de slgAuth
 async function main() { // Début de main
     await slgAuth(); // Authentification
 
-    const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
     const { state, saveCreds } = await useMultiFileAuthState(path.join(__dirname, 'auth'));
     const { version, isLatest } = await fetchLatestBaileysVersion();
 
@@ -73,11 +71,6 @@ async function main() { // Début de main
             keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "silent" }))
         }
     }); // Fin de makeWASocket
-
-    slg.getMessage = async (key) => { // Début de getMessage
-        const msg = await store.loadMessage(key.remoteJid, key.id);
-        return msg.message;
-    }; // Fin de getMessage
 
     store.bind(slg.ev);
     
