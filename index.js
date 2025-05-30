@@ -33,7 +33,7 @@ const {
     makeInMemoryStore, 
     fetchLatestBaileysVersion, 
     DisconnectReason 
-} = require("ovl_wa_baileys"); // Fin de configuration
+} = require("baileys"); // Fin de configuration
 
 const credsPath = path.join(__dirname, 'auth', 'creds.json'); // Début du chemin d'auth
 async function slgAuth() { // Début de slgAuth
