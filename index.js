@@ -126,7 +126,7 @@ slg.ev.on('creds.update', saveCreds);
         const devNumbers = [slgdev, slgbot];
         const user_sudo = getAllSudoNumbers()
 
-        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER, user_sudo]
+        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER]
             .flat()
             .map((s) => (typeof s === 'string' ? `${s.replace(/[^0-9]/g, "")}@s.whatsapp.net` : '')); // Fin de premium_Users_id
 
