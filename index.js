@@ -61,7 +61,7 @@ async function main() { // Début de main
     const { version, isLatest } = await fetchLatestBaileysVersion();
 
     const slg = makeWASocket({ // Début de makeWASocket
-        printQRInTerminal: true,
+        printQRInTerminal: false,
         logger: pino({ level: "silent" }),
         browser: ["Ubuntu", "Chrome", "20.0.04"],
         generateHighQualityLinkPreview: true,
