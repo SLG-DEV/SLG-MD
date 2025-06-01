@@ -76,10 +76,10 @@ async function pRecupActionJid(jid) {
   let client;
   try {
     client = await pool.connect();
-    const result = await client.query('SELECT action FROM presence WHERE jid = $1', [jid]);
+    const result = await client.query('SELECT type FROM presence WHERE jid = $1', [jid]);
 
     if (result.rows.length > 0) {
-      return result.rows[0].action;
+      return result.rows[0].type;
     } else {
       return 'ecrit'; // Valeur par défaut si le JID n'existe pas
     }
