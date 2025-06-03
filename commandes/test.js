@@ -32,7 +32,7 @@ const ng = Date.now();
 console.log("ping...");
 const ping = ng - pi 
 
-slg.sendMessage(ms_org,{text:`> pong ${ping} ms`});
+slg.sendMessage(ms_org,{text:`*_pong ${ping} ms_*`});
 });
 
 
