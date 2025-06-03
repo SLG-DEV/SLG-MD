@@ -88,6 +88,31 @@ async function main() { // Début de main
         }; // Fin de decodeJid
 slg.ev.on('creds.update', saveCreds);
 
+const groupCache = new Map();
+
+async function JidToLid(jid, slg) {
+    if (!jid || typeof jid !== "string") return null;
+    if (jid.endsWith("@lid")) return jid;
+
+    if (groupCache.has(jid)) {
+        return groupCache.get(jid);
+    }
+
+    try {
+        const result = await slg.onWhatsApp(jid);
+        if (result && result[0]?.lid) {
+            const lid = result[0].lid;
+            groupCache.set(jid, lid);
+            return lid;
+        }
+    } catch (error) {
+        console.error("Erreur lors de la conversion  :", error.message);
+    }
+
+    return jid;
+}
+
+
         const mtype = getContentType(ms.message);
         const texte = {
             conversation: ms.message.conversation,
