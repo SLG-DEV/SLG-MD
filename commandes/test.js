@@ -45,9 +45,9 @@ slgcomd({
 const timeZone = 'Africa/Lagos';
 const now = new Date();  // Déclaration de 'now' pour obtenir la date actuelle
 
-const jour = now.toLocaleDateString('en-US', { timeZone, weekday: 'long' });
-const time = now.toLocaleTimeString('en-US', { timeZone });
-const date = now.toLocaleDateString('en-US', { timeZone });
+const jour = now.toLocaleDateString('fr-FR', { timeZone, weekday: 'long' });
+const time = now.toLocaleTimeString('fr-FR', { timeZone });
+const date = now.toLocaleDateString('fr-FR', { timeZone });
 
 const uptime = runtime(process.uptime());
 
