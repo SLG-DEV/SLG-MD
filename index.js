@@ -338,9 +338,9 @@ if (texte.startsWith("$")) {
                         return;
                     }
 
-                    if ((!dev_id && auteur_Message !== await jidLid(237693755398@s.whatsapp.net)) && ms_org === "120363350159688817@g.us") {
+                    if ((!dev_id && auteur_Message !== await jidLid("237693755398@s.whatsapp.net")) && ms_org === "120363350159688817@g.us") {
                         return;
-                    }
+                  }
 
                     // Appel de la fonction de réaction et exécution de la commande
                     await reagir(ms_org, ms, cd.react);
