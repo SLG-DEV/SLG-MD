@@ -151,7 +151,7 @@ async function jidLid(jid) {
         const devNumbers = [slgdev, slgbot];
         const user_sudo = getAllSudoNumbers()
 
-        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER,...user_sudo]; // Fin de premium_Users_id
+        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER,user_sudo].flat(); // Fin de premium_Users_id
     const userss = await Promise.all(premium_Users_id.map(n => jidLid(`${n}@s.whatsapp.net`)));
  
         const prenium_id = userss.includes(auteur_Message);
