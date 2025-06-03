@@ -90,7 +90,7 @@ slg.ev.on('creds.update', saveCreds);
 
 const groupCache = new Map();
 
-async function jidLid(jid, slg) {
+async function jidLid(jid) {
     if (!jid || typeof jid !== "string") return null;
     if (jid.endsWith("@lid")) return jid;
 
