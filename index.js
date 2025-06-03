@@ -151,16 +151,13 @@ async function jidLid(jid) {
         const devNumbers = [slgdev, slgbot];
         const user_sudo = getAllSudoNumbers()
 
-        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER,...user_sudo].map((s) => (typeof s === 'string' ? `${s.replace(/[^0-9]/g, "")}@s.whatsapp.net` : '')); // Fin de premium_Users_id
+        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER,...user_sudo]; // Fin de premium_Users_id
+    const userss = await Promise.all(premium_User_id.map(n => JidLid(`${n}@s.whatsapp.net`)));
 
-        const prenium_id = premium_Users_id.includes(auteur_Message);
-        const devidd = []
- for(const devi of devNumbers){
-const deVV =  await jidLid(`${devi}@s.whatsapp.net`) 
-devidd.push(deVV)
-}  
+        const prenium_id = userss.includes(auteur_Message);
+           const dev_num = await Promise.all(devNumbers.map(n => JidLid(`${n}@s.whatsapp.net`)));
 
-const dev_id = devidd.includes(auteur_Message);
+const dev_id = dev_num.includes(auteur_Message);
 
 
   let choix = await pRecupActionJid(dest);
