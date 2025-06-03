@@ -90,7 +90,7 @@ slg.ev.on('creds.update', saveCreds);
 
 const groupCache = new Map();
 
-async function JidToLid(jid, slg) {
+async function JidLid(jid, slg) {
     if (!jid || typeof jid !== "string") return null;
     if (jid.endsWith("@lid")) return jid;
 
@@ -134,7 +134,7 @@ async function JidToLid(jid, slg) {
         const msg_Repondu = ms.message.extendedTextMessage?.contextInfo?.quotedMessage;
         const auteur_Msg_Repondu = decodeJid(ms.message.extendedTextMessage?.contextInfo?.participant);
         const mr = ms.message.extendedTextMessage?.contextInfo?.mentionedJid;
-        const auteur_Message = verif_Gp ? ms.key.participant : decodeJid(ms.key.fromMe ? id_Bot : ms.key.remoteJid);
+        const auteur_Message = verif_Gp ? jidLid(ms.key.participant) : jidLid(decodeJid(ms.key.fromMe ? id_Bot : ms.key.remoteJid));
         const arg = texte ? texte.trim().split(/ +/).slice(1) : null;
         const verif_Cmd = texte ? texte.startsWith(prefixe) : false;
         const infos_Gp = verif_Gp ? await slg.groupMetadata(ms_org) : "";
@@ -151,9 +151,7 @@ async function JidToLid(jid, slg) {
         const devNumbers = [slgdev, slgbot];
         const user_sudo = getAllSudoNumbers()
 
-        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER]
-            .flat()
-            .map((s) => (typeof s === 'string' ? `${s.replace(/[^0-9]/g, "")}@s.whatsapp.net` : '')); // Fin de premium_Users_id
+        const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER,...user_sudo].map((s) => (typeof s === 'string' ? `${s.replace(/[^0-9]/g, "")}@s.whatsapp.net` : '')); // Fin de premium_Users_id
 
         const prenium_id = premium_Users_id.includes(auteur_Message);
         const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
