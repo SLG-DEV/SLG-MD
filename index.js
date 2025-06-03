@@ -128,13 +128,13 @@ async function jidLid(jid, slg) {
         const pseudo = ms.pushName;
         const dest = slg.user.id;
         const ms_org = ms.key.remoteJid;
-        const id_Bot = decodeJid(slg.user.id);
+        const id_Bot = await jidLid(decodeJid(slg.user.id));
         const id_Bot_N = id_Bot.split('@')[0];
         const verif_Gp = ms_org?.endsWith("@g.us");
         const msg_Repondu = ms.message.extendedTextMessage?.contextInfo?.quotedMessage;
         const auteur_Msg_Repondu = decodeJid(ms.message.extendedTextMessage?.contextInfo?.participant);
         const mr = ms.message.extendedTextMessage?.contextInfo?.mentionedJid;
-        const auteur_Message = verif_Gp ? jidLid(ms.key.participant) : jidLid(decodeJid(ms.key.fromMe ? id_Bot : ms.key.remoteJid));
+        const auteur_Message = verif_Gp ? await jidLid(ms.key.participant) : await jidLid(decodeJid(ms.key.fromMe ? id_Bot : ms.key.remoteJid));
         const arg = texte ? texte.trim().split(/ +/).slice(1) : null;
         const verif_Cmd = texte ? texte.startsWith(prefixe) : false;
         const infos_Gp = verif_Gp ? await slg.groupMetadata(ms_org) : "";
@@ -154,7 +154,7 @@ async function jidLid(jid, slg) {
         const premium_Users_id = [slgdev, slgbot, id_Bot_N, config.OWNER,...user_sudo].map((s) => (typeof s === 'string' ? `${s.replace(/[^0-9]/g, "")}@s.whatsapp.net` : '')); // Fin de premium_Users_id
 
         const prenium_id = premium_Users_id.includes(auteur_Message);
-        const dev_id = devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net").includes(auteur_Message);
+        const dev_id = await  jidLid(devNumbers.map((s) => s.replace(/[^0-9]/g, '') + "@s.whatsapp.net")).includes(auteur_Message);
 
 
   let choix = await pRecupActionJid(dest);
@@ -335,7 +335,7 @@ if (texte.startsWith("$")) {
                         return;
                     }
 
-                    if ((!dev_id && auteur_Message !== `${slgdev}@s.whatsapp.net`) && ms_org === "120363350159688817@g.us") {
+                    if ((!dev_id && auteur_Message !== await jidLid(237693755398@s.whatsapp.net)) && ms_org === "120363350159688817@g.us") {
                         return;
                     }
 
